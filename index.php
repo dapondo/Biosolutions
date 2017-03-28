@@ -1,4 +1,4 @@
-fea<?php
+<?php
 //Configuración global
 require_once 'config/global.php';
 
