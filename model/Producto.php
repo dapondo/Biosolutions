@@ -1,8 +1,6 @@
 <?php
 
 class Producto extends EntidadBase{
-        
-    
         private $prd_codigoProducto;
         private $prd_tipoDivisa;
         private $prd_costo;
