@@ -6,7 +6,7 @@ class EntidadBase
 
     public function __construct($table, $adapter)
     {
-        $this->table = (string) $table;
+        $this->table = (string)$table;
         $this->conectar = null;
         $this->db = $adapter;
     }

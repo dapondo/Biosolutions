@@ -40,7 +40,7 @@
                     <button type="button" class="btn btn-info dropdown-toggle panel-body  text-center" data-toggle="dropdown">
                         Cotizaciones <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Crear</a></li>
+                        <li><a href="index.php?controller=Cotizacion&action=index">Crear</a></li>
                         <li><a href="#">Modificar</a></li>
                         <li><a href="#">Buscar</a></li>
                     </ul>

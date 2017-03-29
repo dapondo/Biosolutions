@@ -7,7 +7,7 @@
     </head>
     <body>
         <div>
-            <form id="crearproducto" action="">
+            <form id="crearproducto" method="POST" action="<?php echo "index.php?controller=Cotizacion&action=index"; ?>">
                 <p>Codigo de Cotizacion</p>
                 <input type="text" id="cot_codigoCotizacion"  name="cot_codigoCotizacion">
                 <p>validez</p>
@@ -20,6 +20,9 @@
                 <input type="text" id="cot_fechaCotizacion"  name="cot_formaPago">
                 <p>Fecha de vencimiento</p>
                 <input type="date" id="prd_fechaVencimiento"  name="prd_fechaVencimiento">
+                <br>
+                <br>
+                <input type="submit">
             </form>
         </div>
     </body>
