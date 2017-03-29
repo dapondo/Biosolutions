@@ -32,7 +32,7 @@ class Producto extends EntidadBase{
         return $this->prd_costo;
     }
 
-    function getPrd_tipoPresentacion() {
+    function getPrd_tipoPresentacion() { 
         return $this->prd_tipoPresentacion;
     }
 
