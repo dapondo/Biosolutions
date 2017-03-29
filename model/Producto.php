@@ -127,4 +127,56 @@ class Producto extends EntidadBase{
         $this->pro_nitÍndice = $pro_nitÍndice;
     }
 
+        public function save() {
+        $query = "INSERT INTO producto (prd_codigoProducto,prd_tipoDivisa,prd_costo,prd_tipoPresentacion,prd_nombre,prd_descripcion,prd_foto,prd_loteSerial,prd_fechaVencimiento,prd_cantidadPresentacion,prd_iva)
+                VALUES(
+                       '" . $this->prd_codigoProducto . "',
+                       '" . $this->prd_tipoDivisa . "',
+                       '" . $this->prd_costo . "',
+                       '" . $this->prd_tipoPresentacion . "',
+                       '" . $this->prd_nombre . "',
+                       '" . $this->prd_descripcion . "',
+                       '" . $this->prd_foto . "',
+                       '" . $this->prd_loteSerial . "',
+                       '" . $this->prd_fechaVencimiento . "',
+                       '" . $this->prd_cantidadPresentacion . "',
+                       '" . $this->prd_iva . "'); ";
+        
+        
+        $save = $this->db()->query($query);
+        //echo "SQL> ".$query;
+        //$this->db()->error;
+        return $save;
+        
+        
+    }
+    public function update() {
+        $query = "UPDATE producto SET prd_codigoProducto=".$_POST['prd_codigoProducto'].",prd_tipoDivisa='".$_POST['prd_tipoDivisa']."',
+        prd_costo='".$_POST['prd_costo']."',prd_tipoPresentacion='".$_POST['prd_tipoPresentacion']."',prd_nombre='".$_POST['prd_nombre']."'               
+        ,prd_fechaVencimiento='".$_POST['prd_fechaVencimiento']."',prd_descripcion='".$_POST['prd_descripcion']."',prd_foto='".$_POST['prd_foto']."'
+        ,prd_loteSerial='".$_POST['prd_loteSerial']."',prd_cantidadPresentacion='".$_POST['prd_cantidadPresentacion']."',prd_iva='".$_POST['prd_iva']."'
+        where prd_codigoProducto = '".$_POST['prd_codigoProducto']."'";
+        
+        $update = $this->db()->query($query);
+        //echo "SQL> ".$query;
+        //$this->db()->error;
+        return $update;
+    }
+    public function buscar(){
+        $query = "SELECT * where prd_codigoProducto = ".$this->prd_codigoProducto." (
+                      
+                       '" . $this->prd_codigoProducto . "',
+                       '" . $this->prd_tipoDivisa . "',
+                       '" . $this->prd_costo . "',
+                       '" . $this->prd_tipoPresentacion . "',
+                       '" . $this->prd_nombre . "',
+                       '" . $this->prd_descripcion . "',
+                       '" . $this->prd_foto . "',
+                       '" . $this->prd_loteSerial . "',
+                       '" . $this->prd_fechaVencimiento . "',
+                       '" . $this->prd_cantidadPresentacion . "',
+                       '" . $this->prd_iva . "'); ";
+    }
+        
+        
 }           
