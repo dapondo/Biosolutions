@@ -21,11 +21,32 @@ class CotizacionController extends ControladorBase {
         //Conseguimos todas las cotizaciones (se utiliza metodo de (entidadbase) )
         $allusers = $cotizaciones->getAll();
 
-        //Cargamos la vista index y le pasamos valores
+       // Cargamos la vista index y le pasamos valores
         $this->view("cotizacion/cotizacion", array(
             "allusers" => $allusers
         ));
+        
     }
     
+    public function crear() {
+        //Si algún dato de los que necesita es POST entonces:
+
+        if (isset($_POST["cot_codigoCotizacion"])) {
+
+            //Creamos una COTIZACION
+            $cotizaciones = new Cotizacion($this->adapter);
+            $cotizaciones->setCot_codigoCotizacion($_POST["cot_codigoCotizacion"]);
+            $cotizaciones->setCon_codigo($_POST["con_codigo"]);
+            $cotizaciones->setCot_validez($_POST["cot_validez"]);
+            $cotizaciones->setCot_tiempoEntrega($_POST["cot_tiempoEntrega"]);
+            $cotizaciones->setCot_lugarEntrega($_POST["cot_lugarEntrega"]);
+            $cotizaciones->setCot_formaPago($_POST["cot_formaPago"]);
+            $cotizaciones->setCot_fechaCotizacion($_POST["cot_fechaCotizacion"]);
+            $save = $cotizaciones->save();
+            
+        }
+       //$this->redirect("Cotizaciones", "index");
+        echo "SQL> ".$query;
+    }
     
 }
