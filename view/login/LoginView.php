@@ -26,7 +26,7 @@
                 <div class="row well">
                     <div class="col-xs-12">
                         <label>Contraseña:</label>
-                        <input class="form-control" name="usu_password">
+                        <input  type="password" class="form-control" name="usu_password">
                     </div>
                 </div>
                 <div class="row">
@@ -43,7 +43,7 @@
                 
                  <div class="row">
                     <div class="col-xs-12">
-                        <a class="btn btn-link btn-block" href="index.php?controller=Login&action=registrarUsuario">Registrarse
+                        <a class="btn btn-link btn-block" href="index.php?controller=Usuario&action=registrarUsuario">Registrarse
                             <i class="fa fa-user-plus" aria-hidden="true"></i></a>
                     </div>
                 </div>

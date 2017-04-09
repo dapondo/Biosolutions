@@ -3,15 +3,15 @@
         <title>Registrar</title>
     </head>
     <body>
-        <form method="POST" action="<?php echo "index.php?controller=Login&action=registrarUsuario"; ?>">
+        <form method="POST" action="<?php echo "index.php?controller=Usuario&action=registrarUsuario"; ?>">
         <h1>Documento</h1>
-        <input name="usu_documento">
+        <input name="usu_documento" class="form-control">
          <h1>Nombre</h1>
         <input name="usu_nombre">
          <h1>Fecha de Nacimiento</h1>
-        <input name="usu_fechaNacimiento">
+         <input type="date" name="usu_fechaNacimiento">
          <h1>Password</h1>
-        <input name="usu_password">
+         <input name="usu_password">
          <h1>Telefono</h1>
         <input name="usu_telefono">
          <h1>Nombre de usuario</h1>

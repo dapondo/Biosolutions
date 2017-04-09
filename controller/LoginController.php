@@ -18,9 +18,9 @@ class LoginController extends ControladorBase {
 
     public function index() {
         //Creamos el objeto $cotizaciones
-        $cotizaciones = new Cotizacion($this->adapter);
+        $usuario = new Usuario($this->adapter);
         //Conseguimos todas las cotizaciones (se utiliza metodo de (entidadbase) )
-        $allusers = $cotizaciones->getAll();
+        $allusers = $usuario->getAll();
 
         // Cargamos la vista index y le pasamos valores
         $this->view("login/Login", array(
@@ -29,6 +29,7 @@ class LoginController extends ControladorBase {
     }
 
     public function login() {
+        
         if (isset($_POST["usu_email"]) && $_POST["usu_password"]) {
             $usuarioname = isset($_POST["usu_email"]) ? trim($_POST["usu_email"]) : "";
             $contrasenna = isset($_POST["usu_password"]) ? trim($_POST["usu_password"]) : "";
@@ -39,15 +40,17 @@ class LoginController extends ControladorBase {
                 );
             } else {
                 //Creamos un usuario   
-                $usuario = new Usuarios($this->adapter);
+                $usuario = new Usuario($this->adapter);
                 $usuario->setUsu_email($usuarioname);
                 $usuario->setUsu_password($contrasenna);
                 $usuario->setUsu_documento($usuarioname);
                 if ($usuario->validarLogin()) {
                     $this->redirect("Cliente", "index");
                 } else {
+                    echo 'no entra';
                     $this->view("login/Login", array(
                         "errores" => "El usuario o contraseña son incorrectos")
+                        
                     );
                 }
             }
@@ -80,27 +83,5 @@ class LoginController extends ControladorBase {
         ));
     }
 
-        public function registrarUsuario() {
-        //Si algún dato de los que necesita es POST entonces:
         
-        if (isset($_POST["cli_documento"])) {
-            //Creamos un cliente
-            $usuario = new Usuarios($this->adapter);
-            $usuario->setUsu_documento($_POST["usu_documento"]);
-            $usuario->setUsu_nombre($_POST["usu_nombre"]);
-            $usuario->setUsu_fechaNacimiento($_POST["usu_fechaNacimiento"]);
-            $usuario->setUsu_password($_POST["usu_password"]);
-            $usuario->setUsu_telefono($_POST["usu_telefono"]);
-            $usuario->setUsu_nombreUsuario($_POST["usu_nombreUsuario"]);
-            $usuario->setCli_nombre($_POST["cli_nombre"]);
-            $usuario->setUsu_direccion($_POST["usu_direccion"]);
-            $usuario->setUsu_email($_POST["usu_email"]);
-
-            $registrarusuario = $usuario->registrar();
-            $this->redirect("login", "Login");
-        }else{
-            $this->view("Login/registrarUsuario");
-        }
-       
-    }
 }

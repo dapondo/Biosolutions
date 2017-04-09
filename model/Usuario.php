@@ -1,6 +1,6 @@
 <?php
 
-class Usuarios extends EntidadBase {
+class Usuario extends EntidadBase {
 
     private $usu_documento;
     private $usu_nombre;
@@ -12,7 +12,7 @@ class Usuarios extends EntidadBase {
     private $usu_email;
 
     public function __construct($adapter) {
-        $table = "cotizaciones";
+        $table = "usuario";
         parent::__construct($table, $adapter);
     }
 
@@ -85,7 +85,6 @@ class Usuarios extends EntidadBase {
         $query = $this->db()->query("SELECT * FROM `usuario` INNER JOIN usuarioroles on usuario.usu_documento = usuarioroles.usu_documento
                   INNER JOIN roles ON roles.rol_idRol = usuarioroles.rol_idRol WHERE (usuario.usu_documento ='$this->usu_documento' || usu_email ='$this->usu_email')"
                 . " && usu_password='$this->usu_password'");
-
 // el print_r es para mostrar un array, es similar al echo
 
         if ($query->num_rows > 0) {
@@ -96,7 +95,7 @@ class Usuarios extends EntidadBase {
                 $_SESSION['nombre'] = $row->usu_nombre;
             }
             $_SESSION['datosvector'] = $resultSet;
-            //$_SESSION['nombre'] = "Julian";
+            //$_SESSION['nombre'] = "Julian";   
             $_SESSION['timeout'] = time();
             session_regenerate_id();
             return true;
@@ -119,9 +118,9 @@ class Usuarios extends EntidadBase {
         //mostrar la consulta completa en pantalla con     
         //echo "QUERY> ".$query;        
         $registrarusuario = $this->db()->query($query);
-
-        // echo "SQL> ".$query;
+        //echo "SQL> ".$query;
         //$this->db()->error;
+
         return $registrarusuario;
     }
 

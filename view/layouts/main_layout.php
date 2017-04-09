@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="container">
-            <h1><?php echo 'Bienvenido '.$_SESSION['nombre'];?></h1>
+            <h1><?php echo 'Bienvenido  '.$_SESSION['nombre'];?></h1>
             <div id="imagen" class="col-xs-1">
         <img src="images/segescot.png" alt=""/>
         </div>
@@ -89,7 +89,7 @@
             <ul id="navigation">
                 <li class="servicioalcliente"><a id="Servicioalcliente" href="" title="Servicio al cliente"><span>Servicio al cliente  <i class="fa fa-users" style="font-size:1px;"></i></span></a></li>
                 <li class="usuario"><a href="" title="Administrar Usuario"><span>Administrar Usuario  <i class="fa fa-user-circle-o"></i></span></a></li>
-                <li class="cerrarsesion"><a id="movercerrar" href="" title="Contact"><span>Cerrar Sesión <i class="fa fa-sign-out"></i></span></a></li>
+                <li class="cerrarsesion"><a id="movercerrar" href="index.php?controller=Login&action=login" title="Contact"><span>Cerrar Sesión <i class="fa fa-sign-out"></i></span></a></li>
             </ul>
         </div>
          <?php
