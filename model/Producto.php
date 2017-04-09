@@ -1,25 +1,26 @@
 <?php
 
-class Producto extends EntidadBase{
-        private $prd_codigoProducto;
-        private $prd_tipoDivisa;
-        private $prd_costo;
-        private $prd_tipoPresentacion;
-        private $prd_nombre;
-        private $prd_descripcion;
-        private $prd_foto;
-        private $prd_loteSerial;
-        private $prd_fechaVencimiento;
-        private $prd_cantidadPresentacion;
-        private $prd_iva;
-        private $cat_idCategoriaÍndice;
-        private $pro_nitÍndice;
-        
-          public function __construct($adapter) {
+class Producto extends EntidadBase {
+
+    private $prd_codigoProducto;
+    private $prd_tipoDivisa;
+    private $prd_costo;
+    private $prd_tipoPresentacion;
+    private $prd_nombre;
+    private $prd_descripcion;
+    private $prd_foto;
+    private $prd_loteSerial;
+    private $prd_fechaVencimiento;
+    private $prd_cantidadPresentacion;
+    private $prd_iva;
+    private $cat_idCategoria;
+    private $pro_nit;
+
+    public function __construct($adapter) {
         $table = "producto";
         parent::__construct($table, $adapter);
-          }
-    
+    }
+
     function getPrd_codigoProducto() {
         return $this->prd_codigoProducto;
     }
@@ -32,7 +33,7 @@ class Producto extends EntidadBase{
         return $this->prd_costo;
     }
 
-    function getPrd_tipoPresentacion() { 
+    function getPrd_tipoPresentacion() {
         return $this->prd_tipoPresentacion;
     }
 
@@ -64,15 +65,14 @@ class Producto extends EntidadBase{
         return $this->prd_iva;
     }
 
-    function getCat_idCategoriaÍndice() {
-        return $this->cat_idCategoriaÍndice;
+    function getCat_idCategoria() {
+        return $this->cat_idCategoria;
     }
 
-    function getPro_nitÍndice() {
-        return $this->pro_nitÍndice;
+    function getPro_nit() {
+        return $this->pro_nit;
     }
 
-        
     function setPrd_codigoProducto($prd_codigoProducto) {
         $this->prd_codigoProducto = $prd_codigoProducto;
     }
@@ -125,8 +125,9 @@ class Producto extends EntidadBase{
         $this->pro_nitÍndice = $pro_nitÍndice;
     }
 
-        public function save() {
-        $query = "INSERT INTO producto (prd_codigoProducto,prd_tipoDivisa,prd_costo,prd_tipoPresentacion,prd_nombre,prd_descripcion,prd_foto,prd_loteSerial,prd_fechaVencimiento,prd_cantidadPresentacion,prd_iva)
+    public function save() {
+        $query = "INSERT INTO producto (prd_codigoProducto,prd_tipoDivisa,prd_costo,prd_tipoPresentacion,prd_nombre,prd_descripcion,prd_foto,
+                  prd_loteSerial,prd_fechaVencimiento,prd_cantidadPresentacion,pro_nit, cat_idCategoria,prd_iva)
                 VALUES(
                        '" . $this->prd_codigoProducto . "',
                        '" . $this->prd_tipoDivisa . "',
@@ -138,30 +139,33 @@ class Producto extends EntidadBase{
                        '" . $this->prd_loteSerial . "',
                        '" . $this->prd_fechaVencimiento . "',
                        '" . $this->prd_cantidadPresentacion . "',
+                       '" . $this->pro_nit . "',
+                       '" . $this->cat_idCategoria . "',
                        '" . $this->prd_iva . "'); ";
-        
-        
+
+
         $save = $this->db()->query($query);
         //echo "SQL> ".$query;
         //$this->db()->error;
         return $save;
-        
-        
     }
+
     public function update() {
-        $query = "UPDATE producto SET prd_codigoProducto=".$_POST['prd_codigoProducto'].",prd_tipoDivisa='".$_POST['prd_tipoDivisa']."',
-        prd_costo='".$_POST['prd_costo']."',prd_tipoPresentacion='".$_POST['prd_tipoPresentacion']."',prd_nombre='".$_POST['prd_nombre']."'               
-        ,prd_fechaVencimiento='".$_POST['prd_fechaVencimiento']."',prd_descripcion='".$_POST['prd_descripcion']."',prd_foto='".$_POST['prd_foto']."'
-        ,prd_loteSerial='".$_POST['prd_loteSerial']."',prd_cantidadPresentacion='".$_POST['prd_cantidadPresentacion']."',prd_iva='".$_POST['prd_iva']."'
-        where prd_codigoProducto = '".$_POST['prd_codigoProducto']."'";
-        
+        $query = "UPDATE producto SET prd_codigoProducto=" . $_POST['prd_codigoProducto'] . ",prd_tipoDivisa='" . $_POST['prd_tipoDivisa'] . "',
+        prd_costo='" . $_POST['prd_costo'] . "',prd_tipoPresentacion='" . $_POST['prd_tipoPresentacion'] . "',prd_nombre='" . $_POST['prd_nombre'] . "'               
+        ,prd_fechaVencimiento='" . $_POST['prd_fechaVencimiento'] . "',prd_descripcion='" . $_POST['prd_descripcion'] . "',prd_foto='" . $_POST['prd_foto'] . "'
+        ,prd_loteSerial='" . $_POST['prd_loteSerial'] . "',prd_cantidadPresentacion='" . $_POST['prd_cantidadPresentacion'] . "',cat_idCategoria='" . $_POST['cat_idCategoria'] . "'
+         ,prd_nit='" . $_POST['prd_nit'] . "',prd_iva='" . $_POST['prd_iva'] . "'   
+        where prd_codigoProducto = '" . $_POST['prd_codigoProducto'] . "'";
+
         $update = $this->db()->query($query);
         //echo "SQL> ".$query;
         //$this->db()->error;
         return $update;
     }
-    public function buscar(){
-        $query = "SELECT * where prd_codigoProducto = ".$this->prd_codigoProducto." (
+
+    public function buscar() {
+        $query = "SELECT * where prd_codigoProducto = " . $this->prd_codigoProducto . " (
                       
                        '" . $this->prd_codigoProducto . "',
                        '" . $this->prd_tipoDivisa . "',
@@ -175,6 +179,5 @@ class Producto extends EntidadBase{
                        '" . $this->prd_cantidadPresentacion . "',
                        '" . $this->prd_iva . "'); ";
     }
-        
-        
-}           
+
+}

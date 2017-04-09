@@ -70,5 +70,25 @@ class Cotizacion extends EntidadBase {
     function setCot_fechaCotizacion($cot_fechaCotizacion) {
         $this->cot_fechaCotizacion = $cot_fechaCotizacion;
     }
+    
+    public function save(){
+        $query = "INSERT into cotizaciones (cot_codigoCotizacion,con_codigo,cot_validez,
+                cot_tiempoEntrega,cot_lugarEntrega,cot_formaPago,cot_fechaCotizacion;)VALUES(
+                       '" . $this->cot_codigoCotizacion . "',
+                       '" . $this->con_codigo . "',
+                       '" . $this->cot_validez . "',
+                       '" . $this->cot_tiempoEntrega . "',
+                       '" . $this->cot_lugarEntrega . "',
+                       '" . $this->cot_formaPago . "',    
+                       '" . $this->cot_fechaCotizacion . "'); ";
+        
+        //mostrar la consulta completa en pantalla con     
+        //echo "QUERY> ".$query;        
+        $savecotizacion = $this->db()->query($query);
+
+        echo "SQL> ".$query;
+        //$this->db()->error;
+        return $savecotizacion;
+    }
 
 }

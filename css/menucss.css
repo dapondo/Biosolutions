@@ -164,3 +164,16 @@ ul#navigation li{
 #crearproducto{
     margin-left: 30%;
 }
+
+/*Contacto*/
+
+
+#div-contacto-1{
+    float: left;
+    margin-left:35%;
+}
+
+#div-contacto-2{
+    float: left;
+    margin-left:8%;
+}

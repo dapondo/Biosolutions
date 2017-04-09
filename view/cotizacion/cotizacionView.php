@@ -10,6 +10,8 @@
             <form id="crearproducto" method="POST" action="<?php echo "index.php?controller=Cotizacion&action=index"; ?>">
                 <p>Codigo de Cotizacion</p>
                 <input type="text" id="cot_codigoCotizacion"  name="cot_codigoCotizacion">
+                <p>Cliente</p>
+                <input type="text" id="con_codigo"  name="con_codigo">
                 <p>validez</p>
                 <input type="text" id="cot_validez"  name="cot_validez">
                 <p>Tiempo de Entrega</p>
@@ -18,8 +20,8 @@
                 <input type="text" id="cot_lugarEntrega"  name="cot_lugarEntrega">
                 <p>Forma de pago</p>
                 <input type="text" id="cot_fechaCotizacion"  name="cot_formaPago">
-                <p>Fecha de vencimiento</p>
-                <input type="date" id="prd_fechaVencimiento"  name="prd_fechaVencimiento">
+                <p>Fecha de vencimiento de cotizacion</p>
+                <input type="date" id="prd_fechaVencimiento"  name="cot_fechaCotizacion">
                 <br>
                 <br>
                 <input type="submit">

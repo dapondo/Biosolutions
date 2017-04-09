@@ -22,7 +22,7 @@
             <div><input type="submit" id="consultar" name="consultar" value="Consultar" ></div>
         </form>
         <div id="principalmodificar">
-        <form id="formcliente" method="POST" action="<?php echo "index.php?controller=cliente&action=modificar"; ?>">
+        <form id="formcliente" method="POST" action="<?php echo "index.php?controller=cliente&action=modificarbd"; ?>">
             <?php
             if ($cli_documento != "") {
                 ?>

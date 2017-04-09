@@ -39,7 +39,7 @@
                         </div>
 
                         <div >
-                            <a href="index.php?controller=Clientepotencial&action=modificar&id=<?php echo $clientepot->cp_nit; ?>" class="btn btn-info">Modificar</a>
+                            <a href="index.php?controller=Clientepotencial&action=modificarbd&id=<?php echo $clientepot->cp_nit; ?>" class="btn btn-info">Modificar</a>
                         </div>
                         <br>
                         <hr/>

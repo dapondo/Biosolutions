@@ -10,8 +10,8 @@ class Despacho extends EntidadBase {
     private $des_Cantidad_Cajas;
     private $des_FechaEnvio;
     private $des_Numfactura;
-    private $cli_documentoÍndice;
-    private $usu_documentoÍndice;
+    private $cli_documento;
+    private $usu_documento;
     
    public function __construct($adapter) {
         $table = "despacho";
@@ -50,12 +50,12 @@ class Despacho extends EntidadBase {
         return $this->des_Numfactura;
     }
 
-    function getCli_documentoÍndice() {
-        return $this->cli_documentoÍndice;
+    function getCli_documento() {
+        return $this->cli_documento;
     }
 
-    function getUsu_documentoÍndice() {
-        return $this->usu_documentoÍndice;
+    function getUsu_documento() {
+        return $this->usu_documento;
     }
 
     function setDes_CodigoDespacho($des_CodigoDespacho) {

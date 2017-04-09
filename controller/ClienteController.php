@@ -75,8 +75,7 @@ class ClienteController extends ControladorBase {
         //Cargamos la vista index y le pasamos valores
 
         $this->view("cliente/indexcliente", array(
-            "cliente" => $valor
-                
+            "cliente" => $valor     
         ));
     }
 

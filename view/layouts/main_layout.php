@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="container">
-            
+            <h1><?php echo 'Bienvenido '.$_SESSION['nombre'];?></h1>
             <div id="imagen" class="col-xs-1">
         <img src="images/segescot.png" alt=""/>
         </div>
@@ -75,7 +75,7 @@
                     <button type="button" class="btn btn-info dropdown-toggle panel-body  text-center" data-toggle="dropdown">
                         Contacto <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Crear</a></li>
+                        <li><a href="index.php?controller=Contacto&action=index">Crear</a></li>
                         <li><a href="#">Modificar</a></li>
                         <li><a href="#">Buscar</a></li>
                     </ul>

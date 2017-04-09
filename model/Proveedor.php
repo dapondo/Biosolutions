@@ -110,7 +110,7 @@ class Proveedor extends EntidadBase {
                 . "pro_pais='".$this->pro_pais."',"
                 . "pro_ciudad='".  $this->pro_ciudad."',
                 where cli_documento = '".$this->pro_nit."'";
-        echo "SQL> ".$query;
+        //echo "SQL> ".$query;
         $updateproveedor = $this->db()->query($query);
     }
 

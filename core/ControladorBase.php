@@ -1,10 +1,11 @@
 <?php
-class ControladorBase
-{
+session_start();
+class ControladorBase {
+
     protected $layout = "main_layout";
-    public function __construct()
-    {
-require_once 'Conectar.php';
+
+    public function __construct() {
+        require_once 'Conectar.php';
         require_once 'EntidadBase.php';
 
         //Incluir todos los modelos
@@ -12,6 +13,7 @@ require_once 'Conectar.php';
             require_once $file;
         }
     }
+
     //Plugins y funcionalidades
 
     /*
@@ -22,22 +24,22 @@ require_once 'Conectar.php';
      * renderizar vistas.
      */
 
-    public function view($vista, $datos = null)
-    {
+    public function view($vista, $datos = null) {
         if ($datos) {
             foreach ($datos as $id_assoc => $valor) {
-                  ${$id_assoc} = $valor;
+                ${$id_assoc} = $valor;
             }
         }
-         require_once 'view/layouts/' . $this->layout . '.php';
-    //    require_once 'view/'. $vista. 'View.php';
+        require_once 'view/layouts/' . $this->layout . '.php';
+        //    require_once 'view/'. $vista. 'View.php';
+    }
+    
+
+    public function redirect($controlador = CONTROLADOR_DEFECTO, $accion = ACCION_DEFECTO) {
+        header("Location:index.php?controller=" . $controlador . "&action=" . $accion);
     }
 
-    public function redirect($controlador = CONTROLADOR_DEFECTO, $accion = ACCION_DEFECTO)
-    {
-        header("Location:index.php?controller=". $controlador. "&action=". $accion);
-        
-    }
     //Métodos para los controladores
 }
+
 ?>

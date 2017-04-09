@@ -28,6 +28,7 @@ class ClientepotencialController extends ControladorBase {
     }
 
     public function crear() {
+        
         //Si algún dato de los que necesita es POST entonces:
 
         if (isset($_POST["cp_nombre"])) {
