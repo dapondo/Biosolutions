@@ -46,7 +46,7 @@ class ClientepotencialController extends ControladorBase {
        $this->redirect("Clientepotencial", "index");
     }
 
-    public function modificar() {
+        public function modificar() {
         //Creamos el objeto clientepotencial 
         $clientepotencial = new clientepotencial($this->adapter);
         if (isset($_GET["id"])) {

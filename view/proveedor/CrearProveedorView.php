@@ -1,6 +1,8 @@
 <html>
     <head>
         <title>Crear</title>
+        <link href="../../../SoluciónPedro/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../SoluciónPedro/css/menucss.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 

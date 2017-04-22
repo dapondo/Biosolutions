@@ -52,18 +52,18 @@ class ProveedorController extends ControladorBase {
             //variable para guardar vector de getById
             $id = (int) $_GET["id"];
         }
-        //Conseguimos el metodo getbyid el cual me envia un vector y debo guardar en una variable
-        $valor = $proveedor->getById($id, "pro_nit");
+         //Conseguimos el metodo getbyid el cual me envia un vector y debo guardar en una variable
+        $valor = $proveedor->getById($id, "cp_nit");
         //Cargamos la vista index y le pasamos valores
-        $this->view("proveedor/ModificarProveedor", array(
+        $this->view("proveedor/ModificarProveedor1", array(
             "proveedor" => $valor
         ));
     }
-
+    
     public function modificarbd() {
         $proveedor = new Proveedor($this->adapter);
         //setear todos los campos
-        if (isset($_POST["cp_nombre"])) {
+        if (isset($_POST["pro_nit"])) {
 
             //Creamos un clientepotencial
             $proveedor = new Proveedor($this->adapter);
@@ -78,7 +78,7 @@ class ProveedorController extends ControladorBase {
             //$clientepotencial->setCp_telefono($_POST["cp_telefono"]);
             $updateproveedor = $proveedor->updateproveedor();
         }
-        $this->redirect("proveedor", "ModificarProveedor");
+        $this->redirect("proveedor", "ModificarProveedor1");
     }
     
 }

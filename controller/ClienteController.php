@@ -100,7 +100,7 @@ class ClienteController extends ControladorBase {
         else{
             echo 'no entra';
         }
-        $this->redirect("cliente", "consultarcliente");
+       $this->redirect("cliente", "consultarcliente");
     }
     
 

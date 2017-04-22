@@ -132,7 +132,7 @@ class Contacto extends EntidadBase {
     }
 
     public function update() {
-        $query = "UPDATE producto SET con_codigo=" . $_POST['con_codigo'] . ",
+        $query = "UPDATE contacto SET con_codigo=" . $_POST['con_codigo'] . ",
         con_estadoCivil='" . $_POST['con_estadoCivil'] . "',
         con_cargo='" . $_POST['con_cargo'] . "',
         con_telefono='" . $_POST['con_telefono'] . "',

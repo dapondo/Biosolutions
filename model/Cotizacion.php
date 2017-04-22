@@ -3,7 +3,7 @@
 class Cotizacion extends EntidadBase {
 
     private $cot_codigoCotizacion;
-    private $con_codigo;
+    private $con_codigo;//llave foranea
     private $cot_validez;
     private $cot_tiempoEntrega;
     private $cot_lugarEntrega;

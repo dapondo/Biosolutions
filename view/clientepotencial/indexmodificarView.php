@@ -19,7 +19,5 @@
             <br>
             <input value="Guardar" type="submit" />
         </form>
-            <br>
 
-            <a  id="volver" href="index.php?controller=clientepotencial&action=crear" value="Volver" >Volver</a>
  

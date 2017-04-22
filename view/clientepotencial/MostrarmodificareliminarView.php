@@ -3,6 +3,7 @@
 <html>
     <head>
         <title></title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <form id="formeditarclientepotencial" method="POST" action="<?php echo "index.php?controller=clientepotencial&action=index2"; ?>">
@@ -21,6 +22,7 @@
             <div><input type="submit" id="consultar" name="consultar" value="Consultar" ></div>
         </form>
         <div id="mostrartodo">
+            
             <h1>Registros</h1>
             <?php
             if ($valor == null) {
