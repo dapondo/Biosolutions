@@ -1,3 +1,6 @@
+<?php 
+if (isset($_SESSION['datosvector']) && $_SESSION['datosvector']){
+?>
 <html>    
     <head>
         <meta charset="utf-8">
@@ -88,17 +91,17 @@
     </div> 
 
 
-    <!--menu desplegable Horizonal
+    <!--menu desplegable Horizonal-->
 
     <div id="vertical" class="container">
         <br>
         <ul id="navigation">
             <li class="servicioalcliente"><a id="Servicioalcliente" href="" title="Servicio al cliente"><span>Servicio al cliente  <i class="fa fa-users" style="font-size:1px;"></i></span></a></li>
             <li class="usuario"><a href="" title="Administrar Usuario"><span>Administrar Usuario  <i class="fa fa-user-circle-o"></i></span></a></li>
-            <li class="cerrarsesion"><a id="movercerrar" href="index.php?controller=Login&action=login" title="Contact"><span>Cerrar Sesión <i class="fa fa-sign-out"></i></span></a></li>
+            <li class="cerrarsesion"><a id="movercerrar" href="index.php?controller=Login&action=logout" title="Contact"><span>Cerrar Sesión <i class="fa fa-sign-out"></i></span></a></li>
         </ul>
     </div>
-    -->
+    
     <?php
     require_once 'view/' . $vista . 'View.php';
     ?>      
@@ -106,3 +109,9 @@
 </head>  
 </body> 
 </html>
+<?php
+}
+else{
+    echo 'Sesión expirada';
+}
+?>

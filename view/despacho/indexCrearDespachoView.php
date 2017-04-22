@@ -13,7 +13,7 @@
                 <div class="col-xs-12 col-lg-8"><input type="text" class="form-control" name="des_CodigoDespacho" placeholder="Codido de despacho"></div>
                 <br>
                 <div class="col-xs-12 col-lg-8"><input type="text" class="form-control" name="des_Transportadora" placeholder="Transportadora"></div>
-                <br>
+                <br>itt
                 <div class="col-xs-12 col-lg-8"><input type="text" class="form-control" name="des_Contrato_Oc" placeholder="Contrato/Oc"></div>
                 <br>
                 <div class="col-xs-12 col-lg-8"><input type="text" class="form-control"  name="des_NumeroGuia" placeholder="Numero de Guia"></div>
