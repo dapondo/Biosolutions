@@ -6,23 +6,26 @@
         <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <form id="formeditarclientepotencial" method="POST" action="<?php echo "index.php?controller=clientepotencial&action=index2"; ?>">
+        <br>
+        <div class="container well col-xs-12 col-lg-10 col-lg-offset-1">
+            <form id="formeditarclientepotencial" method="POST" action="<?php echo "index.php?controller=clientepotencial&action=index2"; ?>">
 
-            <h1>Consultar:</h1>
-            <?php
-            $clientepotencial = isset($clientepotencial->cp_nit) ? $clientepotencial->cp_nit : "";
-            $clientepotencial = isset($clientepotencial->cp_nombre) ? $clientepotencial->cp_nombre : "";
-            $clientepotencial = isset($clientepotencial->cp_ciudad) ? $clientepotencial->cp_ciudad : "";
-            $clientepotencial = isset($clientepotencial->cp_direccion) ? $clientepotencial->cp_direccion : "";
-            $clientepotencial = isset($clientepotencial->cp_observaciones) ? $clientepotencial->cp_observaciones : "";
-            $clientepotencial = isset($clientepotencial->cp_telefono) ? $clientepotencial->cp_telefono : "";
-            ?>
+             
+                <?php
+                $clientepotencial = isset($clientepotencial->cp_nit) ? $clientepotencial->cp_nit : "";
+                $clientepotencial = isset($clientepotencial->cp_nombre) ? $clientepotencial->cp_nombre : "";
+                $clientepotencial = isset($clientepotencial->cp_ciudad) ? $clientepotencial->cp_ciudad : "";
+                $clientepotencial = isset($clientepotencial->cp_direccion) ? $clientepotencial->cp_direccion : "";
+                $clientepotencial = isset($clientepotencial->cp_observaciones) ? $clientepotencial->cp_observaciones : "";
+                $clientepotencial = isset($clientepotencial->cp_telefono) ? $clientepotencial->cp_telefono : "";
+                ?>
 
-            <input type="text" name="cpnit_consultar" >
-            <div><input type="submit" id="consultar" name="consultar" value="Consultar" ></div>
-        </form>
+                <div class="col-xs-12 col-lg-6 col-lg-offset-1" ><input class="form-control" type="text" name="cpnit_consultar"  placeholder="Consultar"></div>
+                <div><input  class="btn btn-success" type="submit" id="consultar" name="consultar" value="Consultar" ></div>
+            </form>
+        </div>
         <div id="mostrartodo">
-            
+
             <h1>Registros</h1>
             <?php
             if ($valor == null) {
