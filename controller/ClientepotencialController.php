@@ -116,7 +116,6 @@ class ClientepotencialController extends ControladorBase {
         
            $this->view("cliente/Mostrarmodificareliminar", array(
                 "clientepotencial" => $valor));
-        
     }
     
     

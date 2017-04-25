@@ -25,7 +25,7 @@
         </div>
 
         <div class="container well col-xs-12 col-lg-10 col-lg-offset-1">
-            <form id="formcliente" method="POST" action="<?php echo "index.php?controller=cliente&action=modificarbd"; ?>">
+            <form id="formcliente" method="POST" action="<?php echo "index.php?controller=Cliente&action=modificarbd"; ?>">
                 <?php
                 if ($cli_documento != "") {
                     ?>
@@ -50,18 +50,18 @@
                     <div class="col-xs-6 col-lg-6" id="div-1-7"><input class="form-control" type="text" name="cli_telefono" value="<?php echo $cli_telefono; ?>"></div>
                     <div class="col-xs-6 col-lg-6" id="div-1-7"><input class="form-control" type="password" name="cli_password" value="<?php echo $cli_password; ?>"></div>
                     <div>
-                    <div class="col-xs-6 col-lg-offset-5"><input  class="tbn btn-success" type="submit" value="Modificar"
-                                <?php
-                            }
-                            if ($cli_zonaCliente == "0") {
-                                echo 'nada';
-                            }
-                            ?>
+                        <div class="col-xs-6 col-lg-offset-5"><input  class="tbn btn-success" type="submit" value="Modificar">
+                            <?php
+                        }
+                        if ($cli_zonaCliente == "0") {
+                            echo 'nada';
+                        }
+                        ?>    
 
-                            </form> 
+                    </div>
                 </div>
-
-                </body>
-                </html>
+            </form> 
+    </body>
+</html>
 
 

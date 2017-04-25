@@ -119,23 +119,36 @@ class Despacho extends EntidadBase {
         $savedespacho = $this->db()->query($query);
         return $savedespacho;
     }
-    
+
     public function updatedespacho() {
-        
-               $query = "UPDATE despacho SET "
-                       ."des_CodigoDespacho='".$this->des_CodigoDespacho."',"
-                       ."des_Transportadora='".$this->des_Transportadora."',"
-                       ."des_ObservacionesEnvio='".$this->des_ObservacionesEnvio."',"
-                       ."des_Contrato_Oc='".$this->des_Contrato_Oc."',"
-                       ."des_NumeroGuia='".$this->des_NumeroGuia."',"
-                       ."des_CantidadCajas='".$this->des_CantidadCajas."',"
-                       ."des_FechaEnvio='".$this->des_FechaEnvio."',"
-                       ."des_Numfactura='".$this->des_Numfactura."',"
-                       ."cli_documento='".$this->cli_documento."',"
-                       ."usu_documento='".$this->usu_documento."',
-                where des_CodigoDespacho = '".$this->des_CodigoDespacho."'";
-     //echo "SQL> ".$query;
+
+        $query = "UPDATE despacho SET "
+                . "des_CodigoDespacho='" . $this->des_CodigoDespacho . "',"
+                . "des_Transportadora='" . $this->des_Transportadora . "',"
+                . "des_ObservacionesEnvio='" . $this->des_ObservacionesEnvio . "',"
+                . "des_Contrato_Oc='" . $this->des_Contrato_Oc . "',"
+                . "des_NumeroGuia='" . $this->des_NumeroGuia . "',"
+                . "des_CantidadCajas='" . $this->des_CantidadCajas . "',"
+                . "des_FechaEnvio='" . $this->des_FechaEnvio . "',"
+                . "des_Numfactura='" . $this->des_Numfactura . "',"
+                . "cli_documento='" . $this->cli_documento . "',"
+                . "usu_documento='" . $this->usu_documento . "',
+                where des_CodigoDespacho = '" . $this->des_CodigoDespacho . "'";
+        //echo "SQL> ".$query;
         $updatedespaco = $this->db()->query($query);
-           
-}
+    }
+
+    public function buscar() {
+        $query = "SELECT * where des_CodigoDespacho = " . $this->des_CodigoDespacho . " (
+                       '" . $this->des_Transportadora . "',
+                       '" . $this->des_ObservacionesEnvio . "',
+                       '" . $this->des_Contrato_Oc . "',
+                       '" . $this->des_NumeroGuia . "',
+                       '" . $this->des_CantidadCajas . "',
+                       '" . $this->des_FechaEnvio . "',
+                       '" . $this->des_Numfactura . "',
+                       '" . $this->cli_documento . "',
+                       '" . $this->usu_documento . "'); ";
+    }
+
 }

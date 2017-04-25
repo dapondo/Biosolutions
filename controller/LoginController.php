@@ -26,8 +26,19 @@ class LoginController extends ControladorBase {
         $this->view("login/Login", array(
             "allusers" => $allusers
         ));
-    }
+  
+        }
+    public function index2() {
+        //Creamos el objeto $cotizaciones
+        $usuario = new Usuario($this->adapter);
+        //Conseguimos todas las cotizaciones (se utiliza metodo de (entidadbase) )
+        $allusers = $usuario->getAll();
 
+        // Cargamos la vista index y le pasamos valores
+        $this->view("cliente/mensajebienvenida", array(
+            "allusers" => $allusers
+        ));
+    }
     public function login() {
         
         if (isset($_POST["usu_email"]) && $_POST["usu_password"]) {
@@ -45,13 +56,14 @@ class LoginController extends ControladorBase {
                 $usuario->setUsu_password($contrasenna);
                 $usuario->setUsu_documento($usuarioname);
                 if ($usuario->validarLogin()) {
-                    $this->redirect("Cliente", "index");
+                    $this->redirect("Login", "index2");
                 } else {
-                    echo 'no entra';
                     $this->view("login/Login", array(
                         "errores" => "El usuario o contraseña son incorrectos")
                         
                     );
+                    echo '<div class="alert alert-danger col-lg-4 col-lg-offset-4 id = "passincorrecta">Usuario o contraseña incorrectos</div>';
+                    
                 }
             }
         } else {

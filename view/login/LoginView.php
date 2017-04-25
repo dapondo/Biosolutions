@@ -9,12 +9,18 @@
 
     </head>
     <body>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <div class="container">
             <form method="POST" action="<?php echo "index.php?controller=Login&action=login"; ?>">
             <div class="col-xs-12 col-md-4 col-md-offset-4 well form-group" id="principal">
                 <div class="row">
-                    <div class="alert alert-danger">Usuario o contraseña incorrectos</div>
-                    <div class="alert alert-success">Ha ingresado correctamente</div>
+                    
+                    
                 </div>
                 <div class="row well">
                     <div class="col-xs-12">

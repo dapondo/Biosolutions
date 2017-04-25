@@ -31,9 +31,9 @@ class DespachoController extends ControladorBase {
             "allusuario" => $allusuario
         ));
     }
-    
-        public function indexmodificar() {
-        $this->view("despacho/indexEditar");
+
+    public function indexmodificar() {
+        $this->view("despacho/modificardespacho");
     }
 
     public function creardespacho() {
@@ -67,7 +67,7 @@ class DespachoController extends ControladorBase {
         //Conseguimos el metodo getbyid el cual me envia un vector y debo guardar en una variable
         $valor = $modificardespacho->getById($id, "des_CodigoDespacho");
         //Cargamos la vista index y le pasamos valores
-        $this->view("despacho/indexEditar", array(
+        $this->view("despacho/modificardespacho", array(
             "modificardespacho" => $valor
         ));
     }
@@ -75,21 +75,57 @@ class DespachoController extends ControladorBase {
     public function modificarbd() {
         $despacho = new Despacho($this->adapter);
         //setear todos los campos
-            if (isset($_POST["des_ObservacionesEnvio"])) {
-                //Creamos un cliente
-                $despacho = new Despacho($this->adapter);
-                $despacho->setDes_Transportadora($_POST["des_Transportadora"]);
-                $despacho->setDes_ObservacionesEnvio($_POST["des_ObservacionesEnvio"]);
-                $despacho->setDes_Contrato_Oc($_POST["des_Contrato_Oc"]);
-                $despacho->setDes_NumeroGuia($_POST["des_NumeroGuia"]);
-                $despacho->setDes_CantidadCajas($_POST["des_CantidadCajas"]);
-                $despacho->setDes_FechaEnvio($_POST["des_FechaEnvio"]);
-                $despacho->setDes_Numfactura($_POST["des_Numfactura"]);
-                //$clientepotencial->setCp_telefono($_POST["cp_telefono"]);
-                $updatedespaco = $despacho->updatedespacho();
-            }
-            $this->redirect("Despacho", "indexmodificar");
+        if (isset($_POST["des_CodigoDespacho"])) {
+            //Creamos un cliente
+            $despacho = new Despacho($this->adapter);
+            $despacho->setDes_Transportadora($_POST["des_Transportadora"]);
+            $despacho->setDes_ObservacionesEnvio($_POST["des_ObservacionesEnvio"]);
+            $despacho->setDes_Contrato_Oc($_POST["des_Contrato_Oc"]);
+            $despacho->setDes_NumeroGuia($_POST["des_NumeroGuia"]);
+            $despacho->setDes_CantidadCajas($_POST["des_CantidadCajas"]);
+            $despacho->setDes_FechaEnvio($_POST["des_FechaEnvio"]);
+            $despacho->setDes_Numfactura($_POST["des_Numfactura"]);
+            //$clientepotencial->setCp_telefono($_POST["cp_telefono"]);
+            $updatedespaco = $despacho->updatedespacho();
         }
+        $this->redirect("despacho", "indexmodificar");
+    }
+
+    public function consultardespacho() {
+        $despacho = new Despacho($this->adapter);
+        $this->view("despacho/modificardespacho", array(
+            "despacho" => $valor));
     }
     
+          public function index2despacho() {
+        //Creamos el objeto clientepotencial
+        $despacho = new Despacho($this->adapter);
+        $valor = NULL;
+        //Conseguimos todos los clientespotenciales (se utiliza metodo de (entidadbase) )
+        if (isset($_POST["des_CodigoDespacho"])) {
+            //variable para guardar vector de getById
+            $id = (int) $_POST["des_CodigoDespacho"];
+            //Conseguimos el metodo getbyid el cual me envia un vector y debo guardar en una variable
+            $valor = $despacho->getById($id, "des_CodigoDespacho");
+            //Cargamos la vista index y le pasamos valores
+        } 
+        $allusers = $despacho->getAll();
+
+        //Cargamos la vista index y le pasamos valores
+        $this->view("despacho/modificardespacho", array(
+            "allusers" => $allusers,
+            "despacho" => $valor
+        ));
+    }
     
+        public function borrar() {
+        if (isset($_GET["id"])) {
+            $id = (int) $_GET["id"];
+
+            $despacho = new Despacho($this->adapter);
+            $despacho->deleteById("des_CodigoDespacho", $id);
+        }
+        $this->redirect("Despacho", "index2despacho");
+    }
+
+}
