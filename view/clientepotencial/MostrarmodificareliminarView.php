@@ -10,7 +10,7 @@
         <div class="container well col-xs-12 col-lg-10 col-lg-offset-1">
             <form id="formeditarclientepotencial" method="POST" action="<?php echo "index.php?controller=clientepotencial&action=index2"; ?>">
 
-             
+
                 <?php
                 $clientepotencial = isset($clientepotencial->cp_nit) ? $clientepotencial->cp_nit : "";
                 $clientepotencial = isset($clientepotencial->cp_nombre) ? $clientepotencial->cp_nombre : "";
@@ -24,27 +24,32 @@
                 <div><input  class="btn btn-success" type="submit" id="consultar" name="consultar" value="Consultar" ></div>
             </form>
         </div>
-        <div id="mostrartodo">
+        <div class="container">
 
-            <h1>Registros</h1>
+            <div class="well lead" style="">Registros</div>
+            <div class="row well">
+
+                <div class="col-xs-2"><strong>NIT</strong></div>
+                <div class="col-xs-2"><strong>Nombre</strong></div>
+                <div class="col-xs-2"><strong>Ciudad</strong></div>
+                <div class="col-xs-2"><strong>Direccion</strong></div>
+                <div class="col-xs-2"><strong>Telefono</strong></div>
+                <div class="col-xs-2"><strong>Observaicion</strong></div>
+            </div>
             <?php
             if ($valor == null) {
                 if (isset($allusers)) {
                     foreach ($allusers as $clientepot) { //recorremos el array de objetos y obtenemos el valor de las propiedades 
-                        echo $clientepot->cp_nit . " - ";
-                        echo '<br>';
-                        echo $clientepot->cp_nombre . " - ";
-                        echo $clientepot->cp_ciudad . " - ";
-                        echo $clientepot->cp_direccion . " - ";
-                        echo $clientepot->cp_telefono . " - ";
-                        echo $clientepot->cp_observaciones . " - ";
+                        ?> <div class="col-xs-2"> <?php echo $clientepot->cp_nit . " - "; ?> </div> <?php
+                        ?> <div class="col-xs-2"> <?php echo $clientepot->cp_nombre . " - "; ?> </div> <?php
+                        ?> <div class="col-xs-2"> <?php echo $clientepot->cp_ciudad . " - "; ?> </div> <?php
+                        ?> <div class="col-xs-2"> <?php echo $clientepot->cp_direccion . " - "; ?> </div> <?php
+                        ?> <div class="col-xs-2"> <?php echo $clientepot->cp_telefono . " - "; ?> </div> <?php
+                        ?> <div class="col-xs-2"> <?php echo $clientepot->cp_observaciones . " - "; ?> </div> <?php
                         ?>
-                        <div>
+                        <div class="col-xs-2">
                             <a href = "<?php echo "index.php?controller=clientepotencial&action=borrar"; ?>&id=<?php echo $clientepot->cp_nit; ?>" class="btn btn-danger">eliminar</a>
-                        </div>
-
-                        <div >
-                            <a href="index.php?controller=Clientepotencial&action=modificarbd&id=<?php echo $clientepot->cp_nit; ?>" class="btn btn-info">Modificar</a>
+                            <a href="index.php?controller=Clientepotencial&action=modificar&id=<?php echo $clientepot->cp_nit; ?>" class="btn btn-info">Modificar</a>
                         </div>
                         <br>
                         <hr/>
@@ -54,19 +59,15 @@
                     <?php
                 }
             } else {
-                echo $valor->cp_nit . " - ";
-                echo '<br>';
-                echo $valor->cp_nombre . " - ";
-                echo $valor->cp_ciudad . " - ";
-                echo $valor->cp_direccion . " - ";
-                echo $valor->cp_telefono . " - ";
-                echo $valor->cp_observaciones . " - ";
+                ?> <div class="col-xs-2"> <?php echo $valor->cp_nit . " - "; ?> </div> <?php
+                ?> <div class="col-xs-2"> <?php echo $valor->cp_nombre . " - "; ?> </div> <?php
+                ?> <div class="col-xs-2"> <?php echo $valor->cp_ciudad . " - "; ?> </div> <?php
+                ?> <div class="col-xs-2"> <?php echo $valor->cp_direccion . " - "; ?> </div> <?php
+                ?> <div class="col-xs-2"> <?php echo $valor->cp_telefono . " - "; ?> </div> <?php
+                ?> <div class="col-xs-2"> <?php echo $valor->cp_observaciones . " - "; ?> </div> <?php
                 ?>
-                <div>
+                <div class="col-xs-2">
                     <a href = "<?php echo "index.php?controller=clientepotencial&action=borrar"; ?>&id=<?php echo $clientepot->cp_nit; ?>" class="btn btn-danger">eliminar</a>
-                </div>
-
-                <div >
                     <a href="index.php?controller=Clientepotencial&action=modificar&id=<?php echo $clientepot->cp_nit; ?>" class="btn btn-info">Modificar</a>
                 </div>
                 <br>
