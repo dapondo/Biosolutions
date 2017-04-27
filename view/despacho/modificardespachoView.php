@@ -27,6 +27,7 @@
 
             <h1>Registros</h1>
             <?php
+            $valor = null;
             if ($valor == null) {
                 if (isset($allusers)) {
                     foreach ($allusers as $despacho) { //recorremos el array de objetos y obtenemos el valor de las propiedades 
@@ -74,8 +75,6 @@
                 <?php
             }
             ?>  
-
-
         </div>
 
 

@@ -16,7 +16,7 @@
                 <div class="col-xs-2"><input class="form-control" id="input-ciudad-consultar" type="text" name="cp_ciudad" placeholder="Ciudad"></div>
                 <div class="col-xs-2"><input class="form-control" id="input-direccion-consultar" type="text" name="cp_direccion" placeholder="Dirección"></div>
                 <div class="col-xs-2"><input class="form-control" id="input-telefono-consultar" type="text" name="cp_telefono" placeholder="Telefono"></div>
-                <div class="col-xs-10"><br><textarea class="form-control" id="input-observaciones-consultar" cols="50" rows="50" type="textarea" name="cp_observaciones" placeholder="Observaciones"></textarea></div>
+                <div class="col-xs-10"><br><textarea class="form-control" id="input-observaciones-consultar" cols="50" rows="5" type="textarea" name="cp_observaciones" placeholder="Observaciones"></textarea></div>
                 <div class="col-xs-3"><br><input class="form-control btn-success" id="input-consultar" type="submit" name="enviar"  value="Crear"></div>
             </form>
             <section class="clientepotencial" id="client">

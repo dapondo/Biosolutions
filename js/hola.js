@@ -10,6 +10,14 @@ $(function () {
                 $('a', $(this)).stop().animate({'marginLeft': '-160px'}, 200);
             }
     );
+    //Funcion de Jquery para comprobar que checkbox esté seleccionado o no.
+    $("#btnContinuarPrivacidad").on("click", function(){
+        if($("#checkPrivacidad").is(':checked')){
+            window.location.href = "index.php?";
+        }else{
+            alert("Debe aceptar terminos");
+        }
+    });
 });
 
 function validacion() {
@@ -19,3 +27,7 @@ function validacion() {
     }
 //onsubmit="return validacion()" colocar en el formulario de crear
 }
+
+
+
+

@@ -139,7 +139,6 @@ class Cliente extends EntidadBase {
     
     
         public function update() {
-            
         $query = "UPDATE cliente SET "
                 . "cli_paginaWeb='".$this->cli_paginaWeb."',"
                 ."cli_direccion ='".$this->cli_direccion."',"
@@ -153,10 +152,8 @@ class Cliente extends EntidadBase {
                 . "cli_telefono='".$this->cli_telefono."'," 
                 . "cli_password='".$this->cli_password."' 
                 where cli_documento = '".$this->cli_documento."'";
-        echo "SQL> ".$query;
+        //echo "SQL> ".$query;
         $update = $this->db()->query($query);
-        
-       
         //$this->db()->error;
         return $update;
     }

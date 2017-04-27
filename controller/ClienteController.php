@@ -84,8 +84,7 @@ class ClienteController extends ControladorBase {
         
         if (isset($_POST["cli_documento"])) {
             //Creamos un cliente
-            $cliente = new cliente($this->adapter);
-            $cliente->setCli_documento($_POST["cli_documento"]);
+            $cliente = new Cliente($this->adapter);
             $cliente->setCli_paginaWeb($_POST["cli_paginaWeb"]);
             $cliente->setCli_direccion($_POST["cli_direccion"]);
             $cliente->setCli_email($_POST["cli_email"]);
@@ -97,10 +96,12 @@ class ClienteController extends ControladorBase {
             $cliente->setCli_password($_POST["cli_password"]);
             $update = $cliente->update();
         }
+        
         else{
             echo 'no entra';
+            
         }
-       $this->redirect("cliente", "consultarcliente");
+      //$this->redirect("cliente", "consultarcliente");
     }
     
 

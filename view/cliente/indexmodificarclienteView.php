@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Crear</title>
+        <title>Modificar</title>
     </head>
     <body>  
         <br>

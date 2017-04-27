@@ -39,6 +39,27 @@ class LoginController extends ControladorBase {
             "allusers" => $allusers
         ));
     }
+        public function index3() {
+        //Creamos el objeto $cotizaciones
+        $usuario = new Usuario($this->adapter);
+        //Conseguimos todas las cotizaciones (se utiliza metodo de (entidadbase) )
+        $allusers = $usuario->getAll();
+
+        $check = isset($_POST["check"]);
+        if ($check == "on"){
+            $this->redirect("Cliente","index");
+            }
+        else{
+                    // Cargamos la vista index y le pasamos valores
+        $this->view("cliente/mensajebienvenida", array(
+            "allusers" => $allusers
+        ));
+                
+        }
+
+        
+    }
+    
     public function login() {
         
         if (isset($_POST["usu_email"]) && $_POST["usu_password"]) {

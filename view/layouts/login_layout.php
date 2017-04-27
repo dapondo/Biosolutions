@@ -6,6 +6,7 @@
         <link href="css/menucss.css" rel="stylesheet" type="text/css"/>
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <script src="js/jquery.js" type="text/javascript"></script>
+        <script src="js/hola.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <!--Font Awesome para insertar iconos desde internet -->
         <script src="https://use.fontawesome.com/033bcd6d1a.js"></script>

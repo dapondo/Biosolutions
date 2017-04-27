@@ -56,7 +56,7 @@ class ClientepotencialController extends ControladorBase {
         //Conseguimos el metodo getbyid el cual me envia un vector y debo guardar en una variable
         $valor = $clientepotencial->getById($id, "cp_nit");
         //Cargamos la vista index y le pasamos valores
-        $this->view("clientepotencial/indexmodificarView", array(
+        $this->view("clientepotencial/indexmodificar", array(
             "clientepotencial" => $valor
         ));
     }
