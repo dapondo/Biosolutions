@@ -17,6 +17,17 @@ if (isset($_SESSION['datosvector']) && $_SESSION['datosvector']) {
     </head>
     <body>
         <div class="container">
+            <div class="col-lg-12 col-lg-offset-10">
+                <?php
+                            if (isset($_SESSION['nombre'])) {
+                                echo $_SESSION['nombre']."  "."  ".'<i class="fa fa-user-circle" aria-hidden="true"></i>';
+                            
+                                
+                            }
+                            
+                            ?>
+                
+            </div>
             <img class="col-xs-5 col-md-2" src="images/segescot.png" alt=""/>
         </div>
         <br> 
@@ -37,8 +48,7 @@ if (isset($_SESSION['datosvector']) && $_SESSION['datosvector']) {
                         Despacho <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="index.php?controller=Despacho&action=indexcrear">Crear</a></li>
-                        <li><a href="index.php?controller=Despacho&action=modificarbd">Modificar</a></li>
-                        <li><a href="#">Buscar</a></li>
+                        <li><a href="index.php?controller=Despacho&action=modificarbd">Mostrar todo</a></li>
                     </ul>
                 </div> 
 
@@ -47,8 +57,7 @@ if (isset($_SESSION['datosvector']) && $_SESSION['datosvector']) {
                         Cotizaciones <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="index.php?controller=Cotizacion&action=index">Crear</a></li>
-                        <li><a href="#">Modificar</a></li>
-                        <li><a href="#">Buscar</a></li>
+                        <li><a href="#">Mostrar todo</a></li>
                     </ul>
                 </div> 
                 <div class="divcontorno col-xs-12 col-lg-2" >
@@ -73,17 +82,15 @@ if (isset($_SESSION['datosvector']) && $_SESSION['datosvector']) {
                         Proveedor <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="index.php?controller=Proveedor&action=index">Crear</a></li>
-                        <li><a href="index.php?controller=Proveedor&action=modificarbd">Modificar</a></li>
-                        <li><a href="#">Buscar</a></li>
+                        <li><a href="index.php?controller=Proveedor&action=modificarbd">Mostrar todo</a></li>
                     </ul>
                 </div> 
                 <div class="divcontorno col-xs-12 col-lg-1" >
                     <button type="button" class="btn btn-info dropdown-toggle panel-body  text-center col-xs-12 col-lg-12" data-toggle="dropdown">
                         Contacto <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="index.php?controller=Contacto&action=index">Crear</a></li>
-                        <li><a href="#">Modificar</a></li>
-                        <li><a href="#">Buscar</a></li>
+                        <li><a href="index.php?controller=Contacto&action=crearcontacto">Crear</a></li>
+                        <li><a href="index.php?controller=Contacto&action=index">Mostrar todo</a></li>
                     </ul>
                 </div> 
             </div>
@@ -98,11 +105,6 @@ if (isset($_SESSION['datosvector']) && $_SESSION['datosvector']) {
                 <li class="servicioalcliente"><a id="Servicioalcliente" href="" title="Servicio al cliente"><span>Servicio al cliente  <i class="fa fa-users" style="font-size:1px;"></i></span></a></li>
                 <li class="usuario"><a href="" title="Administrar Usuario"><span>Administrar Usuario  <i class="fa fa-user-circle-o"></i></span></a></li>
                 <li class="cerrarsesion"><a id="movercerrar" href="index.php?controller=Login&action=logout" title="Contact"><span>Cerrar Sesión 
-                            <?php
-                            if (isset($_SESSION['nombre'])) {
-                                echo "(" . $_SESSION['nombre'] . ")";
-                            }
-                            ?>
                             <i class="fa fa-sign-out"></i></span></a></li>
             </ul>
         </div>

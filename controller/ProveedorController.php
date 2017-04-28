@@ -26,6 +26,17 @@ class ProveedorController extends ControladorBase {
             "allusers" => $allusers
         ));
     }
+        public function index2() {
+        //Creamos el objeto clientepotencial
+        $proveedor = new Proveedor($this->adapter);
+        //Conseguimos todos los clientespotenciales (se utiliza metodo de (entidadbase) )
+        $allusers = $proveedor->getAll();
+
+        //Cargamos la vista index y le pasamos valores
+        $this->view("proveedor/ModificarProveedor1", array(
+            "allusers" => $allusers
+        ));
+    }
         
         public function crearproveedor(){
              if (isset($_POST["pro_nit"])) {
@@ -78,7 +89,7 @@ class ProveedorController extends ControladorBase {
             //$clientepotencial->setCp_telefono($_POST["cp_telefono"]);
             $updateproveedor = $proveedor->updateproveedor();
         }
-        $this->redirect("proveedor", "ModificarProveedor1");
+        $this->redirect("Proveedor", "index2");
     }
     
 }

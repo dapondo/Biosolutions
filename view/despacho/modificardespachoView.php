@@ -7,6 +7,7 @@
     <body>
         <br>
         <div class="container well col-xs-12 col-lg-10 col-lg-offset-1">
+            <div>consultar</div>
             <form id="formeditarDesacho" method="POST" action="<?php echo "index.php?controller=Despacho&action=index2despacho"; ?>">
 
                 <?php
@@ -24,13 +25,11 @@
             </form>
         </div>
         <div id="mostrartodo">
-
-            <h1>Registros</h1>
             <?php
-            $valor = null;
             if ($valor == null) {
                 if (isset($allusers)) {
                     foreach ($allusers as $despacho) { //recorremos el array de objetos y obtenemos el valor de las propiedades 
+                        echo '<h1>Registros</h1>';
                         echo $despacho->des_CodigoDespacho . " - ";
                         echo '<br>';
                         echo $despacho->des_Transportadora . " - ";
@@ -44,7 +43,7 @@
 
                         <div><a href="<?php echo "index.php?controller=Despacho&action=borrar"; ?>&id=<?php echo $despacho->des_CodigoDespacho; ?>" class="btn btn-danger">eliminar</a></div>
                         <div>
-                            <a href="index.php?controller=Despacho&action=modificarbd&id=<?php echo $despacho->des_CodigoDespacho; ?>" class="btn btn-info">Modificar</a>
+                            <a href="index.php?controller=Despacho&action=modificardespacho&id=<?php echo $despacho->des_CodigoDespacho; ?>" class="btn btn-info">Modificar</a>
                         </div>
                         <br>
                         <hr/>

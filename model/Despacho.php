@@ -123,7 +123,6 @@ class Despacho extends EntidadBase {
     public function updatedespacho() {
 
         $query = "UPDATE despacho SET "
-                . "des_CodigoDespacho='" . $this->des_CodigoDespacho . "',"
                 . "des_Transportadora='" . $this->des_Transportadora . "',"
                 . "des_ObservacionesEnvio='" . $this->des_ObservacionesEnvio . "',"
                 . "des_Contrato_Oc='" . $this->des_Contrato_Oc . "',"

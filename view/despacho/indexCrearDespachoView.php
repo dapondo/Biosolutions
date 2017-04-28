@@ -5,7 +5,7 @@
     <body>
         <br>
         <div class="container col-xs-12 col-lg-10 col-lg-offset-1 well">
-            <form method="POST" action="index.php?controller=Despacho&action=creardespacho">
+            <form method="POST" action="index.php?controller=Despacho&action=modificarbd">
                 <div class="col-xs-12 col-lg-12">Fecha:</div>
                 <div class="col-xs-12 col-lg-8"><input class="form-control" type="date" name="des_FechaEnvio">
                 </div>
