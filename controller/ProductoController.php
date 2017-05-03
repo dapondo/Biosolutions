@@ -1,153 +1,68 @@
 <?php
 
-class Producto extends EntidadBase {
+class ProductoController extends ControladorBase {
 
-    private $prd_codigoProducto;
-    private $prd_tipoDivisa;
-    private $prd_costo;
-    private $prd_tipoPresentacion;
-    private $prd_nombre;
-    private $prd_descripcion;
-    private $prd_foto;
-    private $prd_loteSerial;
-    private $prd_fechaVencimiento;
-    private $prd_cantidadPresentacion;
-    private $prd_iva;
-    private $cat_idCategoria;
-    private $pro_nit;
+    //Los dos atributos conectar y adapter sirven para hacer la conexion de la base de datos
+    public $conectar;
+    public $adapter;
 
-    public function __construct($adapter) {
-        $table = "producto";
-        parent::__construct($table, $adapter);
+    public function __construct() {
+        parent::__construct();
+        //Se crea un objeto de tipo (conectar)
+        $this->conectar = new Conectar();
+        $this->adapter = $this->conectar->conexion();
+        //Se utiliza el objeto de tipo conectar para llamar una función del (controladorbase) 
+        //que es el que ejecuta la conexión
     }
 
-    function getPrd_codigoProducto() {
-        return $this->prd_codigoProducto;
+    public function index() {
+        //Creamos el objeto producto
+        $producto = new Producto($this->adapter);
+        //Conseguimos todos los productos (se utiliza metodo de (entidadbase) )
+        $allusers = $producto->getAll();
+
+        //Cargamos la vista index y le pasamos valores
+        $this->view("producto/crearproducto", array(
+            "allusers" => $allusers
+        ));
+    }
+    
+     public function index2() {
+        //Creamos el objeto producto
+        $proveedor = new Proveedor($this->adapter);
+        //Conseguimos todos los productos (se utiliza metodo de (entidadbase) )
+        $allusers = $proveedor->getAll();
+
+        //Cargamos la vista index y le pasamos valores
+        $this->view("producto/crearproducto", array(
+            "allusers" => $allusers
+        ));
     }
 
-    function getPrd_tipoDivisa() {
-        return $this->prd_tipoDivisa;
-    }
+    public function crearproducto() {
+        //Si algún dato de los que necesita es POST entonces:
 
-    function getPrd_costo() {
-        return $this->prd_costo;
-    }
+        if (isset($_POST["prd_codigoProducto"])) {
+            //Creamos un cliente
+            $producto = new Producto($this->adapter);
+            $producto->setPrd_codigoProducto($_POST["prd_codigoProducto"]);
+            //$producto->setCat_idCategoria($_POST["cat_idCategoria"]);
+            //$producto->setPro_nit($_POST["pro_nit"]);
+            $producto->setPrd_tipoDivisa($_POST["prd_tipoDivisa"]);
+            $producto->setPrd_costo($_POST["prd_costo"]);
+            $producto->setPrd_tipoPresentacion($_POST["prd_tipoPresentacion"]);
+            $producto->setPrd_nombre($_POST["prd_nombre"]);
+            $producto->setPrd_descripcion($_POST["prd_descripcion"]);
+            $producto->setPrd_foto($_POST["prd_foto"]);
+            $producto->setPrd_loteSerial($_POST["prd_loteSerial"]);
+            $producto->setPrd_fechaVencimiento($_POST["prd_fechaVencimiento"]);
+            $producto->setPrd_cantidadPresentacion($_POST["prd_cantidadPresentacion"]);
+            $producto->setPrd_iva($_POST["prd_iva"]);
 
-    function getPrd_tipoPresentacion() {
-        return $this->prd_tipoPresentacion;
-    }
-
-    function getPrd_nombre() {
-        return $this->prd_nombre;
-    }
-
-    function getPrd_descripcion() {
-        return $this->prd_descripcion;
-    }
-
-    function getPrd_foto() {
-        return $this->prd_foto;
-    }
-
-    function getPrd_loteSerial() {
-        return $this->prd_loteSerial;
-    }
-
-    function getPrd_fechaVencimiento() {
-        return $this->prd_fechaVencimiento;
-    }
-
-    function getPrd_cantidadPresentacion() {
-        return $this->prd_cantidadPresentacion;
-    }
-
-    function getPrd_iva() {
-        return $this->prd_iva;
-    }
-
-    function getCat_idCategoria() {
-        return $this->cat_idCategoria;
-    }
-
-    function getPro_nit() {
-        return $this->pro_nit;
-    }
-
-    function setPrd_codigoProducto($prd_codigoProducto) {
-        $this->prd_codigoProducto = $prd_codigoProducto;
-    }
-
-    function setPrd_tipoDivisa($prd_tipoDivisa) {
-        $this->prd_tipoDivisa = $prd_tipoDivisa;
-    }
-
-    function setPrd_costo($prd_costo) {
-        $this->prd_costo = $prd_costo;
-    }
-
-    function setPrd_tipoPresentacion($prd_tipoPresentacion) {
-        $this->prd_tipoPresentacion = $prd_tipoPresentacion;
-    }
-
-    function setPrd_nombre($prd_nombre) {
-        $this->prd_nombre = $prd_nombre;
-    }
-
-    function setPrd_descripcion($prd_descripcion) {
-        $this->prd_descripcion = $prd_descripcion;
-    }
-
-    function setPrd_foto($prd_foto) {
-        $this->prd_foto = $prd_foto;
-    }
-
-    function setPrd_loteSerial($prd_loteSerial) {
-        $this->prd_loteSerial = $prd_loteSerial;
-    }
-
-    function setPrd_fechaVencimiento($prd_fechaVencimiento) {
-        $this->prd_fechaVencimiento = $prd_fechaVencimiento;
-    }
-
-    function setPrd_cantidadPresentacion($prd_cantidadPresentacion) {
-        $this->prd_cantidadPresentacion = $prd_cantidadPresentacion;
-    }
-
-    function setPrd_iva($prd_iva) {
-        $this->prd_iva = $prd_iva;
-    }
-
-    function setCat_idCategoriaÍndice($cat_idCategoriaÍndice) {
-        $this->cat_idCategoria = $cat_idCategoriaÍndice;
-    }
-
-    function setPro_nitÍndice($pro_nitÍndice) {
-        $this->pro_nit = $pro_nitÍndice;
-    }
-
-    public function save() {
-        $query = "INSERT INTO producto (prd_codigoProducto,prd_tipoDivisa,prd_costo,prd_tipoPresentacion,prd_nombre,prd_descripcion,prd_foto,
-                  prd_loteSerial,prd_fechaVencimiento,prd_cantidadPresentacion,pro_nit, cat_idCategoria,prd_iva)
-                VALUES(
-                       '" . $this->prd_codigoProducto . "',
-                       '" . $this->prd_tipoDivisa . "',
-                       '" . $this->prd_costo . "',
-                       '" . $this->prd_tipoPresentacion . "',
-                       '" . $this->prd_nombre . "',
-                       '" . $this->prd_descripcion . "',
-                       '" . $this->prd_foto . "',
-                       '" . $this->prd_loteSerial . "',
-                       '" . $this->prd_fechaVencimiento . "',
-                       '" . $this->prd_cantidadPresentacion . "',
-                       '" . $this->pro_nit . "',
-                       '" . $this->cat_idCategoria . "',
-                       '" . $this->prd_iva . "'); ";
-
-
-        $save = $this->db()->query($query);
-        //echo "SQL> ".$query;
-        //$this->db()->error;
-        return $save;
+            $save = $producto->save();
+        }
+       $this->redirect("producto", "index");
+        
     }
 
 }
