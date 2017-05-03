@@ -72,7 +72,7 @@ class Cotizacion extends EntidadBase {
     }
     
     public function save(){
-        $query = "INSERT into cotizaciones (cot_codigoCotizacion,con_codigo,cot_validez,
+        $query = "INSERT INTO cotizaciones (cot_codigoCotizacion,con_codigo,cot_validez,
                 cot_tiempoEntrega,cot_lugarEntrega,cot_formaPago,cot_fechaCotizacion;)VALUES(
                        '" . $this->cot_codigoCotizacion . "',
                        '" . $this->con_codigo . "',

@@ -146,16 +146,31 @@ class Cliente extends EntidadBase {
                 . "cli_zonaCliente=".$this->cli_zonaCliente.","
                 ."cli_ciudad='".$this->cli_ciudad."',"
                 . "cli_nombre='".  $this->cli_nombre."',"   
-                . "cli_pais='".$this->cli_pais."',"
                 . "cli_password='".  $this->cli_nombre."',"   
                 . "cli_pais='".$this->cli_pais."'," 
                 . "cli_telefono='".$this->cli_telefono."'," 
                 . "cli_password='".$this->cli_password."' 
                 where cli_documento = '".$this->cli_documento."'";
         //echo "SQL> ".$query;
+        
+        
+        
+//         $query = "UPDATE cliente SET 
+//                cli_paginaWeb=".$_POST['cli_paginaWeb'].",cli_direccion ='".$_POST['cli_direccion']."',
+//                cli_email='".$_POST[cli_email]."',cli_zonaCliente='".$_POST[cli_zonaCliente]."',
+//                cli_ciudad='".$_POST[cli_ciudad]."',
+//                cli_nombre='".$_POST[cli_nombre]."',   
+//                cli_password='".$_POST[cli_nombre]."',   
+//                cli_pais='".$_POST[cli_pais]."', 
+//                cli_telefono='".$_POST[cli_telefono]."', 
+//                cli_password='".$_POST[cli_password]."' 
+//                where cli_documento='".$_POST[cli_documento]."'"
+        
+        
         $update = $this->db()->query($query);
         //$this->db()->error;
         return $update;
+        
     }
     
     }

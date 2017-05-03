@@ -57,12 +57,11 @@ class ClienteController extends ControladorBase {
             //Conseguimos el metodo getbyid el cual me envia un vector y debo guardar en una variable
             $valor = $clienteconsultar->getById($id, "cli_documento");
             //Cargamos la vista index y le pasamos valores
-        } 
-           $this->view("cliente/indexmodificarcliente", array(
-                "cliente" => $valor));
-        
+        }
+        $this->view("cliente/indexmodificarcliente", array(
+            "cliente" => $valor));
     }
-    
+
     public function modificar() {
         //Creamos el objeto cliente
         $cliente = new cliente($this->adapter);
@@ -74,17 +73,15 @@ class ClienteController extends ControladorBase {
         $valor = $cliente->getById($id, "cli_documento");
         //Cargamos la vista index y le pasamos valores
 
-        $this->view("cliente/indexcliente", array(
-            "cliente" => $valor     
+        $this->view("cliente/modificarcliente", array(
+            "cliente" => $valor
         ));
     }
 
     public function modificarbd() {
         //setear todos los campos
-        
-        if (isset($_POST["cli_documento"])) {
+        if ($_POST["cli_documento"]) {
             //Creamos un cliente
-            $cliente = new Cliente($this->adapter);
             $cliente->setCli_paginaWeb($_POST["cli_paginaWeb"]);
             $cliente->setCli_direccion($_POST["cli_direccion"]);
             $cliente->setCli_email($_POST["cli_email"]);
@@ -95,14 +92,30 @@ class ClienteController extends ControladorBase {
             $cliente->setCli_telefono($_POST["cli_telefono"]);
             $cliente->setCli_password($_POST["cli_password"]);
             $update = $cliente->update();
+            print_r($cliente);
         }
-        
-        else{
-            echo 'no entra';
-            
-        }
-      //$this->redirect("cliente", "consultarcliente");
+       $this->view("cliente/indexmodificarcliente");
     }
-    
+
+    public function index2() {
+        //Creamos el objeto clientepotencial
+        $cliente = new cliente($this->adapter);
+        $valor = NULL;
+        //Conseguimos todos los clientespotenciales (se utiliza metodo de (entidadbase) )
+        if (isset($_POST["id"])) {
+            //variable para guardar vector de getById
+            $id = (int) $_POST["id"];
+            //Conseguimos el metodo getbyid el cual me envia un vector y debo guardar en una variable
+            $valor = $cliente->getById($id, "cli_documento");
+            //Cargamos la vista index y le pasamos valores
+        }
+        $allusers = $cliente->getAll();
+
+        //Cargamos la vista index y le pasamos valores
+        $this->view("cliente/indexmodificarcliente", array(
+            "allusers" => $allusers,
+            "cliente" => $valor
+        ));
+    }
 
 }

@@ -1,5 +1,3 @@
-<!--Mostrar modificar eliminar cliente potencial-->  
-
 <html>
     <head>
         <title></title>

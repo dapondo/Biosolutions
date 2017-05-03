@@ -138,7 +138,7 @@ class Despacho extends EntidadBase {
     }
 
     public function buscar() {
-        $query = "SELECT * where des_CodigoDespacho = " . $this->des_CodigoDespacho . " (
+        $query = "SELECT * from despacho where des_CodigoDespacho = " . $this->des_CodigoDespacho . " (
                        '" . $this->des_Transportadora . "',
                        '" . $this->des_ObservacionesEnvio . "',
                        '" . $this->des_Contrato_Oc . "',

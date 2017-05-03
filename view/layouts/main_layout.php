@@ -17,7 +17,7 @@ if (isset($_SESSION['datosvector']) && $_SESSION['datosvector']) {
     </head>
     <body>
         <div class="container">
-            <div class="col-lg-12 col-lg-offset-10">
+            <div class="col-lg-4 col-lg-offset-8">
                 <?php
                             if (isset($_SESSION['nombre'])) {
                                 echo $_SESSION['nombre']."  "."  ".'<i class="fa fa-user-circle" aria-hidden="true"></i>';

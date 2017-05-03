@@ -64,7 +64,7 @@ class ClientepotencialController extends ControladorBase {
     public function modificarbd() {
         $clientepotencial = new clientepotencial($this->adapter);
         //setear todos los campos
-        if (isset($_POST["cp_nit"])) {
+        if (isset($_POST["cp_nombre"])) {
 
             //Creamos un clientepotencial
             $clientepotencial = new clientepotencial($this->adapter);

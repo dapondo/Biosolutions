@@ -108,17 +108,26 @@ class DespachoController extends ControladorBase {
     }
 
     public function consultardespacho() {
-        $despacho = new Despacho($this->adapter);
+        $despacho = new despacho($this->adapter);
+        $valor = NULL;
+        
+           if (isset($_POST["id"])) {
+            //variable para guardar vector de getById
+            $id = (int) $_POST["id"];
+            //Conseguimos el metodo getbyid el cual me envia un vector y debo guardar en una variable
+            $valor = $despacho->getById($id, "des_CodigoDespacho");
+        }
+        $allusers = $despacho->getAll();
+        
         $this->view("despacho/modificardespacho", array(
             "despacho" => $valor));
     }
+    
 
-    
-    
     //Este metodo se utiliza en la consulta en la vista modificardespachoView
     public function index2despacho() {
         //Creamos el objeto despacho
-        $despacho = new Despacho($this->adapter);
+        $despacho = new despacho($this->adapter);
         //declaramos variable en NULL
         $valor = NULL;
         //Conseguimos todos los despacho (se utiliza metodo de (entidadbase) )

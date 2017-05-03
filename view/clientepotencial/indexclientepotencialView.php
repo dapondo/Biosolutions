@@ -6,8 +6,6 @@
     <body>
         <br>
         <div class="container well ">
-
-
             <form   class="row" method="POST" action="<?php echo "index.php?controller=clientepotencial&action=crear"; ?>">
                 <div class=" well "> <h1>Crear cliente potencial</h1>  </div>
 

@@ -45,7 +45,7 @@ class CotizacionController extends ControladorBase {
             $save = $cotizaciones->save();
             
         }
-       //$this->redirect("Cotizaciones", "index");
+       $this->redirect("Cotizaciones", "index");
         echo "SQL> ".$query;
     }
     
