@@ -117,12 +117,12 @@ class Producto extends EntidadBase {
         $this->prd_iva = $prd_iva;
     }
 
-    function setCat_idCategoriaÍndice($cat_idCategoriaÍndice) {
-        $this->cat_idCategoriaÍndice = $cat_idCategoriaÍndice;
+    function setCat_idCategoria($cat_idCategoria) {
+        $this->cat_idCategoria = $cat_idCategoria;
     }
 
-    function setPro_nitÍndice($pro_nitÍndice) {
-        $this->pro_nitÍndice = $pro_nitÍndice;
+    function setPro_nit($pro_nit) {
+        $this->pro_nit = $pro_nit;
     }
 
     public function save() {
@@ -148,36 +148,6 @@ class Producto extends EntidadBase {
         //echo "SQL> ".$query;
         //$this->db()->error;
         return $save;
-    }
-
-    public function update() {
-        $query = "UPDATE producto SET prd_codigoProducto=" . $_POST['prd_codigoProducto'] . ",prd_tipoDivisa='" . $_POST['prd_tipoDivisa'] . "',
-        prd_costo='" . $_POST['prd_costo'] . "',prd_tipoPresentacion='" . $_POST['prd_tipoPresentacion'] . "',prd_nombre='" . $_POST['prd_nombre'] . "'               
-        ,prd_fechaVencimiento='" . $_POST['prd_fechaVencimiento'] . "',prd_descripcion='" . $_POST['prd_descripcion'] . "',prd_foto='" . $_POST['prd_foto'] . "'
-        ,prd_loteSerial='" . $_POST['prd_loteSerial'] . "',prd_cantidadPresentacion='" . $_POST['prd_cantidadPresentacion'] . "',cat_idCategoria='" . $_POST['cat_idCategoria'] . "'
-         ,prd_nit='" . $_POST['prd_nit'] . "',prd_iva='" . $_POST['prd_iva'] . "'   
-        where prd_codigoProducto = '" . $_POST['prd_codigoProducto'] . "'";
-
-        $update = $this->db()->query($query);
-        //echo "SQL> ".$query;
-        //$this->db()->error;
-        return $update;
-    }
-
-    public function buscar() {
-        $query = "SELECT * where prd_codigoProducto = " . $this->prd_codigoProducto . " (
-                      
-                       '" . $this->prd_codigoProducto . "',
-                       '" . $this->prd_tipoDivisa . "',
-                       '" . $this->prd_costo . "',
-                       '" . $this->prd_tipoPresentacion . "',
-                       '" . $this->prd_nombre . "',
-                       '" . $this->prd_descripcion . "',
-                       '" . $this->prd_foto . "',
-                       '" . $this->prd_loteSerial . "',
-                       '" . $this->prd_fechaVencimiento . "',
-                       '" . $this->prd_cantidadPresentacion . "',
-                       '" . $this->prd_iva . "'); ";
     }
 
 }

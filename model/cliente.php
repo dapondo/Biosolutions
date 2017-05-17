@@ -1,7 +1,7 @@
 <?php
 
 class Cliente extends EntidadBase {
-   
+
     private $cli_documento;
     private $cli_paginaWeb;
     private $cli_direccion;
@@ -12,12 +12,12 @@ class Cliente extends EntidadBase {
     private $cli_pais;
     private $cli_telefono;
     private $cli_password;
-    
-     public function __construct($adapter) {
+
+    public function __construct($adapter) {
         $table = "cliente";
         parent::__construct($table, $adapter);
     }
-    
+
     function getCli_documento() {
         return $this->cli_documento;
     }
@@ -57,6 +57,7 @@ class Cliente extends EntidadBase {
     function getCli_password() {
         return $this->cli_password;
     }
+
     function setCli_documento($cli_documento) {
         $this->cli_documento = $cli_documento;
     }
@@ -95,12 +96,10 @@ class Cliente extends EntidadBase {
 
     function setCli_password($cli_password) {
         $this->cli_password = $cli_password;
-    } 
+    }
 
-    
-    
-    public function savecliente(){
-    $query = "INSERT INTO cliente (cli_documento,cli_paginaWeb,cli_direccion,cli_email,cli_zonaCliente,cli_ciudad,cli_nombre,
+    public function savecliente() {
+        $query = "INSERT INTO cliente (cli_documento,cli_paginaWeb,cli_direccion,cli_email,cli_zonaCliente,cli_ciudad,cli_nombre,
     cli_pais,cli_telefono,cli_password)VALUES(
                        '" . $this->cli_documento . "',
                        '" . $this->cli_paginaWeb . "',
@@ -112,65 +111,49 @@ class Cliente extends EntidadBase {
                        '" . $this->cli_pais . "',   
                        '" . $this->cli_telefono . "',
                        '" . $this->cli_password . "'); ";
-    //mostrar la consulta completa en pantalla con     
-    //echo "QUERY> ".$query;        
-   $savecliente = $this->db()->query($query);   
-        
-       // echo "SQL> ".$query;
-        //$this->db()->error;
+//mostrar la consulta completa en pantalla con     
+//echo "QUERY> ".$query;        
+        $savecliente = $this->db()->query($query);
+
+// echo "SQL> ".$query;
+//$this->db()->error;
         return $savecliente;
-        
     }
-    
-    public function buscar(){
+
+    public function buscar() {
         $query = "SELECT cli_documento,cli_paginaWeb,cli_direccion,cli_email,cli_zonaCliente,cli_ciudad,cli_nombre,
-    cli_pais,cli_telefono,cli_password FROM cliente  where cli_documento = ".$this->cli_documento." (
-                       '" . $this->cli_documento . "',
-                       '" . $this->cli_paginaWeb . "',
-                       '" . $this->cli_direccion . "',
-                       '" . $this->cli_email . "',
-                       '" . $this->cli_zonaCliente . "',
-                       '" . $this->cli_ciudad . "',    
-                       '" . $this->cli_nombre . "',
-                       '" . $this->cli_pais . "',   
-                       '" . $this->cli_telefono . "',
-                       '" . $this->cli_password . "'); ";
+    cli_pais,cli_telefono,cli_password FROM cliente  where cli_documento = " . $this->cli_documento . " OR cli_ciudad = '" . $this->ciudad . "' OR cli_nombre = '" . $this->cli_nombre . "'(
+'" . $this->cli_documento . "',
+ '" . $this->cli_paginaWeb . "',
+ '" . $this->cli_direccion . "',
+ '" . $this->cli_email . "',
+ '" . $this->cli_zonaCliente . "',
+ '" . $this->cli_ciudad . "',
+ '" . $this->cli_nombre . "',
+ '" . $this->cli_pais . "',
+ '" . $this->cli_telefono . "',
+ '" . $this->cli_password . "');
+";
+        echo "SQL> " . $query;
     }
-    
-    
-        public function update() {
+
+    public function update() {
         $query = "UPDATE cliente SET "
-                . "cli_paginaWeb='".$this->cli_paginaWeb."',"
-                ."cli_direccion ='".$this->cli_direccion."',"
-                . "cli_email='".$this->cli_email."',"
-                . "cli_zonaCliente=".$this->cli_zonaCliente.","
-                ."cli_ciudad='".$this->cli_ciudad."',"
-                . "cli_nombre='".  $this->cli_nombre."',"   
-                . "cli_password='".  $this->cli_nombre."',"   
-                . "cli_pais='".$this->cli_pais."'," 
-                . "cli_telefono='".$this->cli_telefono."'," 
-                . "cli_password='".$this->cli_password."' 
-                where cli_documento = '".$this->cli_documento."'";
+                . "cli_paginaWeb = '" . $this->cli_paginaWeb . "', "
+                . "cli_direccion = '" . $this->cli_direccion . "', "
+                . "cli_email = '" . $this->cli_email . "', "
+                . "cli_zonaCliente = " . $this->cli_zonaCliente . ", "
+                . "cli_ciudad = '" . $this->cli_ciudad . "', "
+                . "cli_nombre = '" . $this->cli_nombre . "', "
+                . "cli_password = '" . $this->cli_nombre . "', "
+                . "cli_pais = '" . $this->cli_pais . "', "
+                . "cli_telefono = '" . $this->cli_telefono . "', "
+                . "cli_password = '" . $this->cli_password . "'
+where cli_documento = '" . $this->cli_documento . "'";
         //echo "SQL> ".$query;
-        
-        
-        
-//         $query = "UPDATE cliente SET 
-//                cli_paginaWeb=".$_POST['cli_paginaWeb'].",cli_direccion ='".$_POST['cli_direccion']."',
-//                cli_email='".$_POST[cli_email]."',cli_zonaCliente='".$_POST[cli_zonaCliente]."',
-//                cli_ciudad='".$_POST[cli_ciudad]."',
-//                cli_nombre='".$_POST[cli_nombre]."',   
-//                cli_password='".$_POST[cli_nombre]."',   
-//                cli_pais='".$_POST[cli_pais]."', 
-//                cli_telefono='".$_POST[cli_telefono]."', 
-//                cli_password='".$_POST[cli_password]."' 
-//                where cli_documento='".$_POST[cli_documento]."'"
-        
-        
         $update = $this->db()->query($query);
         //$this->db()->error;
         return $update;
-        
     }
-    
-    }
+
+}

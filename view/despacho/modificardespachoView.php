@@ -2,69 +2,73 @@
 <html>
     <body>
         <br>
-        <div class="container well col-xs-12 col-lg-10 col-lg-offset-1 ">
-            <form id="formeditarDesacho" method="POST" action="<?php echo "index.php?controller=Despacho&action=index2despacho"; ?>">
-                <?php
-                $despacho = isset($despacho->des_Transportadora) ? $despacho->des_Transportadora : "";
-                $despacho = isset($despacho->des_ObservacionesEnvio) ? $despacho->des_ObservacionesEnvio : "";
-                $despacho = isset($despacho->des_Contrato_Oc) ? $despacho->des_Contrato_Oc : "";
-                $despacho = isset($despacho->des_NumeroGuia) ? $despacho->des_NumeroGuia : "";
-                $despacho = isset($despacho->des_CantidadCajas) ? $despacho->des_CantidadCajas : "";
-                $despacho = isset($despacho->des_FechaEnvio) ? $despacho->des_FechaEnvio : "";
-                $despacho = isset($despacho->des_Numfactura) ? $despacho->des_Numfactura : "";
-                ?>
-                <div class="col-xs-12 col-lg-6 col-lg-offset-1" ><input class="form-control" type="text" name="cpnit_consultar"  placeholder="Consultar"></div>
-                <div><input  class="btn btn-success" type="submit" id="consultar1" name="consultar" value="Consultar" ></div>
-            </form>
-            
-            <br><br>
-            <div><h3>Registros</h3></div>
-            <div class="row well ">
-                <div class="col-xs-3"><strong>Codigo Despacho</strong></div>
-                <div class="col-xs-2"><strong>Contrato</strong></div>
-                <div class="col-xs-3"><strong>Número de guía</strong></div>
-                <div class="col-xs-2"><strong>Fecha de envío</strong></div>
-                <div class="col-xs-2"><strong>Factura</strong></div>
-            </div>
-            <div class="row">
+        <div class="container well col-xs-12 col-lg-10 col-lg-offset-1">
+            <form id="formeditarDesacho" method="POST" action="<?php echo "index.php?controller=Despacho&action=consultardespacho"; ?>">
 
-                <?php
-                if ($valor == null) {
-                    if (isset($allusers)) {
-                        foreach ($allusers as $despacho) { //recorremos el array de objetos y obtenemos el valor de las propiedades 
-                            ?> <div class="col-xs-3"> <?php echo $despacho->des_CodigoDespacho ?> </div> <?php
-                            ?> <div class="col-xs-2"> <?php echo $despacho->des_Contrato_Oc ?> </div> <?php
-                            ?> <div class="col-xs-3"> <?php echo $despacho->des_NumeroGuia ?> </div> <?php
-                            ?> <div class="col-xs-2"> <?php echo $despacho->des_FechaEnvio ?> </div> <?php
-                            ?> <div class="col-xs-2"> <?php echo $despacho->des_Numfactura ?> </div> <?php
-                            ?>
-                            <div class=" well col-xs-12 col-lg-12">
-                                <a href="<?php echo "index.php?controller=Despacho&action=borrar"; ?>&id=<?php echo $despacho->des_CodigoDespacho; ?>" class="btn btn-danger">eliminar</a>
-                                <a href="index.php?controller=Despacho&action=modificardespacho&id=<?php echo $despacho->des_CodigoDespacho; ?>" class="btn btn-info">Modificar</a>
-                            </div>
-                            <?php
-                        }
-                        ?>
-                        <?php
-                    }
-                } else if ($valor == $_POST[des_CodigoDespacho]) {
-                    ?> <div class="col-xs-2"> <?php echo $valor->des_CodigoDespacho . " - "; ?> </div> <?php
-                    ?> <div class="col-xs-2"> <?php echo $valor->des_Contrato_Oc . " - "; ?> </div> <?php
-                    ?> <div class="col-xs-2"> <?php echo $valor->des_NumeroGuia . " - "; ?> </div> <?php
-                    ?> <div class="col-xs-2"> <?php echo $valor->des_FechaEnvio . " - "; ?> </div> <?php
-                    ?> <div class="col-xs-2"> <?php echo $valor->des_Numfactura . " - "; ?> </div> <?php
-                    ?><br>
-                    <div class="col-xs-2">
-                        <a href = "<?php echo "index.php?controller=Despacho&action=borrar"; ?>&id=<?php echo $despacho->des_CodigoDespacho; ?>" class="btn btn-danger">eliminar</a>
-                        <a href="index.php?controller=Despacho&action=modificardespacho&id=<?php echo $despacho->des_CodigoDespacho; ?>" class="btn btn-info">Modificar</a>
-                    </div>
+                <div class="col-xs-12 col-lg-6 col-lg-offset-1">
+                    <input name="documento_consultar" value= "<?php echo $documento_consultar; ?>" class="form-control" placeholder="Consultar">
                     <?php
-                }
-                echo "</div>";
-                ?>  
-
-            </div>
+                    ?>
+                </div>
+                <div class="col-lg-3">
+                    <!--Antes tenía el nombre de filtro-->
+                    <select name="filtro" class="form-control col-lg-6">
+                        <option value ='des_CodigoDespacho'>Codigo Despacho</option>
+                        <option value='cli_documento'>Doc. Cliente</option>
+                        <option value='des_Contrato_Oc'>Contrato/orden</option>
+                    </select>
+                </div>
+                <div class = "col-xs-12 col-lg-12 col-lg-offset-1" >
+                    <input type = "submit" class = "btn btn-success" style = "margin-top: 20px;" name = "consultar" value = "Consultar">
+                </div>
+            </form>        
         </div>
+
+
+        <?php
+        echo "
+        <div class='container well col-xs-12 col-lg-10 col-lg-offset-1'>
+        <div class = 'col-xs-6 col-lg-3 well'>Codigo Despacho</div>
+        <div class = 'col-xs-6 col-lg-2 well'>Contrato</div>
+        <div class = 'col-xs-6 col-lg-2 well'>Factura</div>
+        <div class = 'col-xs-6 col-lg-1 well'>Cliente</div> 
+        <div class = 'col-xs-6 col-lg-2 well'>Observaciones</div> 
+        <div class = 'col-xs-6 col-lg-2 well'>Funcionalidades</div>";
+        if (isset($mensajes)) {
+            echo $mensajes;
+        }
+        //antes clientefiltro
+        if (isset($despachofiltro)) {
+            foreach ($despachofiltro as $despacho) {
+                $des_CodigoDespacho = isset($despacho->des_CodigoDespacho) ? $despacho->des_CodigoDespacho : "";
+                $des_Transportadora = isset($despacho->des_Transportadora) ? $despacho->des_Transportadora : "";
+                $des_ObservacionesEnvio = isset($despacho->des_ObservacionesEnvio) ? $despacho->des_ObservacionesEnvio : "";
+                $des_Contrato_Oc = isset($despacho->des_Contrato_Oc) ? $despacho->des_Contrato_Oc : "";
+                $des_NumeroGuia = isset($despacho->des_NumeroGuia) ? $despacho->des_NumeroGuia : "";
+                $des_CantidadCajas = isset($despacho->des_CantidadCajas) ? $despacho->des_CantidadCajas : "";
+                $des_FechaEnvio = isset($despacho->des_FechaEnvio) ? $despacho->des_FechaEnvio : "";
+                $des_Numfactura = isset($despacho->des_Numfactura) ? $despacho->des_Numfactura : "";
+                $cli_documento = isset($despacho->cli_documento) ? $despacho->cli_documento : "";
+                $usu_documento = isset($despacho->usu_documento) ? $despacho->usu_documento : "";
+                echo "
+        <form id='formdespacho' method='POST' action='index.php?controller=Despacho&action=modificarbd;' ?>
+        <div class = 'col-xs-6 col-lg-3 well'><p name = 'des_CodigoDespacho'>$des_CodigoDespacho</p></div>
+        <div class = 'col-xs-6 col-lg-2 well'><p name = 'des_Contrato_Oc'>$des_Contrato_Oc</p></div>
+        <div class = 'col-xs-6 col-lg-2 well'><p name = 'des_Numfactura'>$des_Numfactura</p></div>  
+        <div class = 'col-xs-6 col-lg-1 well'><p name = 'cli_documento'>$cli_documento</p></div>  
+        <div class = 'col-xs-6 col-lg-2 well'><p name = 'des_ObservacionesEnvio'>$des_ObservacionesEnvio</p></div>
+        <a href='index.php?controller=Despacho&action=modificardespacho&id=$despacho->des_CodigoDespacho;' class='btn btn-success col-lg-2 col-xs-1' style='margin-top: 1px;'>Modificar</a>
+        <br>
+        <br>    
+         <a href='index.php?controller=Despacho&action=borrar&id=$despacho->des_CodigoDespacho;'class='btn btn-danger col-lg-2 col-xs-1' style='margin-top: 1px;'>eliminar</a>    
+        </form> ";
+            }
+
+            if ($cli_documento != "") {
+                
+            }
+        }
+        ?>
     </body>
 </html>
 

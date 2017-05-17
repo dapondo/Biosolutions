@@ -51,15 +51,45 @@ class ClienteController extends ControladorBase {
 
     public function consultarcliente() {
         $clienteconsultar = new cliente($this->adapter);
+        $selectfiltro = isset($_POST['filtro']) ? $_POST['filtro'] : "";
         if (isset($_POST["documento_consultar"])) {
-            //variable para guardar vector de getById
-            $id = (int) $_POST["documento_consultar"];
-            //Conseguimos el metodo getbyid el cual me envia un vector y debo guardar en una variable
-            $valor = $clienteconsultar->getById($id, "cli_documento");
+            $allusers = $clienteconsultar->getAll();
+            //variable para guardar vector de getBy
+            $id = $_POST["documento_consultar"];
+            if ($id == "") {
+                $valor = $clienteconsultar->getAll();
+            } else {
+                //Conseguimos el metodo getby el cual me envia un vector y debo guardar en una variable
+                $valor = $clienteconsultar->getBy($selectfiltro, $id);
+            }
             //Cargamos la vista index y le pasamos valores
+            $this->view("cliente/indexmodificarcliente", array(
+                "clientefiltro" => $valor,
+                "allusers" => $allusers,
+                "documento_consultar" => $id
+            ));
+        } else if (isset($_GET["documento_consultar"])) {
+            $allusers = $clienteconsultar->getAll();
+            //variable para guardar vector de getBy
+            $id = $_GET["documento_consultar"];
+            //Conseguimos el metodo getby el cual me envia un vector y debo guardar en una variable
+            $valor = $clienteconsultar->getBy('cli_documento', $id);
+            //Cargamos la vista index y le pasamos valores
+            $this->view("cliente/indexmodificarcliente", array(
+                "clientefiltro" => $valor,
+                "allusers" => $allusers,
+                "mensajes" => "El cliente ha sido modificado con exito",
+                "documento_consultar" => $id
+                    )
+            );
+        } else {
+            $valor = $clienteconsultar->getAll();
+            $this->view("cliente/indexmodificarcliente", array(
+                "cliente" => null,
+                "documento_consultar" => "",
+                "clientefiltro" => $valor,
+            ));
         }
-        $this->view("cliente/indexmodificarcliente", array(
-            "cliente" => $valor));
     }
 
     public function modificar() {
@@ -81,7 +111,9 @@ class ClienteController extends ControladorBase {
     public function modificarbd() {
         //setear todos los campos
         if ($_POST["cli_documento"]) {
+            $cliente = new cliente($this->adapter);
             //Creamos un cliente
+            $cliente->setCli_documento($_POST["cli_documento"]);
             $cliente->setCli_paginaWeb($_POST["cli_paginaWeb"]);
             $cliente->setCli_direccion($_POST["cli_direccion"]);
             $cliente->setCli_email($_POST["cli_email"]);
@@ -92,9 +124,9 @@ class ClienteController extends ControladorBase {
             $cliente->setCli_telefono($_POST["cli_telefono"]);
             $cliente->setCli_password($_POST["cli_password"]);
             $update = $cliente->update();
-            print_r($cliente);
         }
-       $this->view("cliente/indexmodificarcliente");
+        $this->redirect("cliente", "consultarcliente&documento_consultar=" . $cliente->getCli_documento());
+        //header("Location:index.php?controller=" . $controlador . "&action=" . $accion);
     }
 
     public function index2() {
@@ -116,6 +148,21 @@ class ClienteController extends ControladorBase {
             "allusers" => $allusers,
             "cliente" => $valor
         ));
+    }
+
+    //Borrar un cliente
+    public function borrar() {
+        if (isset($_GET["id"])) {
+            $id = (int) $_GET["id"];
+
+            $cliente = new Cliente($this->adapter);
+            $cliente->deleteById("cli_documento", $id);
+        }
+        //  $this->redirect("cliente", "consultarcliente&documento_consultar=" . $cliente->getCli_documento());
+
+        $this->view("cliente/indexmodificarcliente", array(
+            "mensajes" => "El cliente ha sido eliminado con exito",
+            "documento_consultar" => ""));
     }
 
 }

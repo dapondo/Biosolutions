@@ -131,9 +131,9 @@ class Despacho extends EntidadBase {
                 . "des_FechaEnvio='" . $this->des_FechaEnvio . "',"
                 . "des_Numfactura='" . $this->des_Numfactura . "',"
                 . "cli_documento='" . $this->cli_documento . "',"
-                . "usu_documento='" . $this->usu_documento . "',
+                . "usu_documento='" . $this->usu_documento . "'
                 where des_CodigoDespacho = '" . $this->des_CodigoDespacho . "'";
-        //echo "SQL> ".$query;
+        echo "SQL> ".$query;
         $updatedespaco = $this->db()->query($query);
     }
 

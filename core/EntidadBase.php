@@ -49,11 +49,12 @@ class EntidadBase
     public function getBy($column, $value)
     {
         $query = $this->db->query("SELECT * FROM $this->table WHERE $column='$value'");
-
+        //echo "SELECT * FROM $this->table WHERE $column='$value'";
+        $resultSet = null;
         while ($row = $query->fetch_object()) {
             $resultSet[] = $row;
         }
-
+       // print_r($query);
         return $resultSet;
     }
 
@@ -61,12 +62,14 @@ class EntidadBase
     {
         $query = $this->db->query("DELETE FROM $this->table WHERE ". $primaryKey. "=". $id);
         $codigoError = 0;
+       // echo "DELETE FROM $this->table WHERE $primaryKey = $id";
         if ($this->db()->errno) {
             $codigoError = $this->db()->errno;
             return $codigoError;
         }
+        //print_r($query);
+        
         return $query;
-        // print_r($query);
     }
 
     public function deleteBy($column, $value)

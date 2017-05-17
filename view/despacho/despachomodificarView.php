@@ -11,7 +11,7 @@
 
                 <div class="form-group col-lg-10 col-lg-offset-1">
                     <p>Fecha de envío</p>
-                    <input disabled class="form-control" type="text" name="des_FechaEnvio" value="<?php echo $valor->des_FechaEnvio; ?>">
+                    <input class="form-control" type="text" name="des_FechaEnvio" value="<?php echo $valor->des_FechaEnvio; ?>">
                 </div>
 
                 <div class="form-group col-lg-10 col-lg-offset-1">
@@ -44,7 +44,17 @@
                 </div>
                 <div class="form-group col-lg-10 col-lg-offset-1">
                     <p>Cedula o Nit de cliente</p>
-                    <input type="textarea" name="cli_documento" class="form-control" value="<?php echo $valor->cli_documento; ?>">
+                    
+                    <select name="cli_documento" class="form-control selcls">
+                            <?php
+                            //var_dump($allusers);
+                            if ($allclient != "") {
+                                foreach ($allclient as $item) {
+                                    echo "<option value='$item->cli_documento'>$item->cli_nombre</option>";
+                                }
+                            }
+                            ?>
+                        </select>                   
                 </div>
                 <div class="form-group col-lg-10 col-lg-offset-1">    
                     <p>Usuario quien realiza despacho</p>

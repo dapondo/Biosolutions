@@ -20,24 +20,24 @@ class ProductoController extends ControladorBase {
         $producto = new Producto($this->adapter);
         //Conseguimos todos los productos (se utiliza metodo de (entidadbase) )
         $allusers = $producto->getAll();
+        
+        $categoria = new Categoria($this->adapter);
+        //Conseguimos todos los productos (se utiliza metodo de (entidadbase) )
+        $allCat = $categoria->getAll();
+        
+        $proveedor = new Proveedor($this->adapter);
+        //Conseguimos todos los productos (se utiliza metodo de (entidadbase) )
+        $allProv = $proveedor->getAll();
 
         //Cargamos la vista index y le pasamos valores
         $this->view("producto/crearproducto", array(
+            "allCat" => $allCat,
+            "allProv" => $allProv,
             "allusers" => $allusers
         ));
     }
     
-     public function index2() {
-        //Creamos el objeto producto
-        $proveedor = new Proveedor($this->adapter);
-        //Conseguimos todos los productos (se utiliza metodo de (entidadbase) )
-        $allusers = $proveedor->getAll();
 
-        //Cargamos la vista index y le pasamos valores
-        $this->view("producto/crearproducto", array(
-            "allusers" => $allusers
-        ));
-    }
 
     public function crearproducto() {
         //Si algún dato de los que necesita es POST entonces:
@@ -46,8 +46,8 @@ class ProductoController extends ControladorBase {
             //Creamos un cliente
             $producto = new Producto($this->adapter);
             $producto->setPrd_codigoProducto($_POST["prd_codigoProducto"]);
-            //$producto->setCat_idCategoria($_POST["cat_idCategoria"]);
-            //$producto->setPro_nit($_POST["pro_nit"]);
+            $producto->setCat_idCategoria   ($_POST["cat_idCategoria"]);
+            $producto->setPro_nit($_POST["pro_nit"]);
             $producto->setPrd_tipoDivisa($_POST["prd_tipoDivisa"]);
             $producto->setPrd_costo($_POST["prd_costo"]);
             $producto->setPrd_tipoPresentacion($_POST["prd_tipoPresentacion"]);

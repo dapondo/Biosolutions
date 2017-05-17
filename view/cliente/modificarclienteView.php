@@ -9,10 +9,14 @@
 
                 <h1 class="col-xs-10 col-xs-offset-1 col-lg-12 col-lg-offset-3">Editar despacho</h1>
                 <br>
-                
-                <div class="col-xs-12 col-xs-offset-1 col-lg-10"><input class="form-control" disabled type="text" name="cli_documento" value="<?php echo $valor->cli_documento;  ?>"></div>
+                <p>Documento</p>
+                <div class="col-xs-12 col-xs-offset-1 col-lg-10">
+                    <input class="form-control" disabled type="text" name="cli_documento1" value="<?php echo $valor->cli_documento;  ?>">
+                    <input class="form-control"  type="hidden" name="cli_documento" value="<?php echo $valor->cli_documento;  ?>">
+                </div>
                 <br>
                 <br>
+                <p>Pagina Web</p>
                 <div class="col-xs-12 col-xs-offset-1 col-lg-10" ><input class="form-control" type="text" name="cli_paginaWeb"  value="<?php echo $valor->cli_paginaWeb; ?>"></div>
                 <br>
                 <br>

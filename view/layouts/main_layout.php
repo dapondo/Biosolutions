@@ -12,21 +12,18 @@ if (isset($_SESSION['datosvector']) && $_SESSION['datosvector']) {
             <script src="js/hola.js" type="text/javascript"></script>
             <script src="js/bootstrap.min.js" type="text/javascript"></script>
             <!--Font Awesome para insertar iconos desde internet -->
-            <script src="https://use.fontawesome.com/033bcd6d1a.js"></script>
+            <!--<script src="https://use.fontawesome.com/033bcd6d1a.js"></script>-->
         <noscript><h1>Debes activar el uso de JavaScript para que puedas ver todo el contenido</h1></noscript> 
     </head>
     <body>
-        <div class="container">
-            <div class="col-lg-4 col-lg-offset-8">
+        <div class="container" >
+            <div class="col-lg-3 col-lg-offset-10">
                 <?php
-                            if (isset($_SESSION['nombre'])) {
-                                echo $_SESSION['nombre']."  "."  ".'<i class="fa fa-user-circle" aria-hidden="true"></i>';
-                            
-                                
-                            }
-                            
-                            ?>
-                
+                if (isset($_SESSION['nombre'])) {
+                    echo $_SESSION['nombre'] . "  " . "  " . '<i class="fa fa-user-circle" aria-hidden="true"></i>';
+                }
+                ?>
+
             </div>
             <img class="col-xs-5 col-md-2" src="images/segescot.png" alt=""/>
         </div>
@@ -72,9 +69,9 @@ if (isset($_SESSION['datosvector']) && $_SESSION['datosvector']) {
                     <button type="button" class="btn btn-info dropdown-toggle panel-body text-center col-xs-12 col-lg-12" data-toggle="dropdown">
                         Producto <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Crear</a></li>
-                        <li><a href="#">Modificar</a></li>
-                        <li><a href="#">Buscar</a></li>
+                        <li><a href="index.php?controller=Producto&action=index">Crear</a></li>
+                        <li><a href="#">Mostrar todo</a></li>
+                        <li><a href="index.php?controller=Categoria&action=crearcategoria">Categoría</a></li>
                     </ul>
                 </div> 
                 <div class="divcontorno col-xs-12 col-lg-2" >
@@ -109,9 +106,9 @@ if (isset($_SESSION['datosvector']) && $_SESSION['datosvector']) {
             </ul>
         </div>
 
-        <?php
-        require_once 'view/' . $vista . 'View.php';
-        ?>      
+    <?php
+    require_once 'view/' . $vista . 'View.php';
+    ?>      
 
     </head>  
     </body> 
